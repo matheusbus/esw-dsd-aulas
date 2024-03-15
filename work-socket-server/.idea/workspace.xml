@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="862f1dfe-b127-4871-a301-0b23047c3ea4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/dao/DAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/dao/InMemoryDAO.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/dao/JpaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/built-jar.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/.netbeans_automatic_build" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/.netbeans_update_resources" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/WorkSocketServer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/dao/DAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/dao/InMemoryDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/dao/JpaDAO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/dao/factory/DAOFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/dao/factory/JpaDAOFactory.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/dao/impl/CompanyJpaDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/dao/impl/CustomerJpaDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/dao/impl/EmployeeJpaDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/dao/impl/PersonJpaDAOImpl.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/domain/Company.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/domain/Customer.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/domain/Employee.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/domain/Person.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/protocol/CompanyMethod.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/protocol/CustomerMethod.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/protocol/EmployeeMethod.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/protocol/Method.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/protocol/Subject.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/request/RequestHandler$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/request/RequestHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/request/RequestHandlerException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/request/Response.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/service/CompanyService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/service/CustomerService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/service/EmployeeService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/service/PersonService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/test/TesteBanco.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/sds/socket/server/test/TesteSplit.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/README.TXT" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/flatlaf-2.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/flatlaf-intellij-themes-2.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/hibernate-commons-annotations-5.1.2.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/hibernate-core-5.6.5.Final.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/jakarta.persistence-2.2.3.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/junit-jupiter-api-5.6.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/junit-jupiter-engine-5.6.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/junit-jupiter-params-5.6.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/org.eclipse.persistence.antlr-2.7.12.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/org.eclipse.persistence.asm-9.4.0.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/org.eclipse.persistence.core-2.7.12.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/org.eclipse.persistence.jpa-2.7.12.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/org.eclipse.persistence.jpa.jpql-2.7.12.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/org.eclipse.persistence.moxy-2.7.12.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/lib/postgresql-42.5.4.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/work-socket-server.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/manifest.mf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/build-impl.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/genfiles.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/private/private.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nbproject/project.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/META-INF/persistence.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/WorkSocketServer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/dao/DAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/dao/InMemoryDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/dao/JpaDAO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/dao/factory/DAOFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/dao/factory/JpaDAOFactory.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/dao/impl/CompanyJpaDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/dao/impl/CustomerJpaDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/dao/impl/EmployeeJpaDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/dao/impl/PersonJpaDAOImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/domain/Company.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/domain/Customer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/domain/Employee.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/domain/Person.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/protocol/CompanyMethod.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/protocol/CustomerMethod.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/protocol/EmployeeMethod.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/protocol/Method.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/protocol/Subject.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/request/RequestHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/request/RequestHandlerException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/request/Response.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/service/CompanyService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/service/CustomerService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/service/EmployeeService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/service/PersonService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/test/TesteBanco.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sds/socket/server/test/TesteSplit.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "onboarding.tips.debug.path": "C:/GitHub/esw-dsd-aulas/work-socket-server/src/main/java/org/example/Main.java",
+    "settings.editor.selected.configurable": "editor.preferences.import"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="862f1dfe-b127-4871-a301-0b23047c3ea4" name="Changes" comment="" />
+      <created>1710460577884</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1710460577884</updated>
+    </task>
+    <servers />
+  </component>
+</project>
