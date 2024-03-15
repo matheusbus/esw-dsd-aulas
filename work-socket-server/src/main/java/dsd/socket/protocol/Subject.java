@@ -2,6 +2,7 @@ package dsd.socket.protocol;
 
 public enum Subject {
 
+    PERSON,
     COMPANY,
     CUSTOMER,
     EMPLOYEE;
@@ -12,7 +13,7 @@ public enum Subject {
                 return subject;
             }
         }
-        return null;
+        throw new IllegalArgumentException("The subject ["+value+"] does not exists.");
     }
 
 }

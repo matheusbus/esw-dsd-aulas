@@ -5,14 +5,18 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+import java.io.Serializable;
+
 /**
  *
  * @author matheus.buschermoehl
  */
 @Entity
 @Table(name = "tbcustomer")
-public class Customer extends Person {
-    
+public class Customer extends Person implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Column(name = "cst_deliveryaddress")
     private String deliveryAddress;
     

@@ -32,7 +32,9 @@ public abstract class JpaDAO<T, ID> implements DAO<T, ID> {
 
     @Override
     public T insert(T entity) {
+        beginTrans();
         em.persist(entity);
+        commitTrans();
         return entity;
     }
 

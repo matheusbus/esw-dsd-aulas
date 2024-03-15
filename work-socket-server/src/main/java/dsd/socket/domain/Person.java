@@ -2,6 +2,8 @@ package dsd.socket.domain;
 
 import jakarta.persistence.*;
 
+import java.io.Serializable;
+
 /**
  *
  * @author matheus.buschermoehl
@@ -9,8 +11,10 @@ import jakarta.persistence.*;
 @Entity
 @Table(name = "tbperson")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
-public abstract class Person {
-    
+public abstract class Person implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @Column(name = "per_cpf")
     private String cpf;

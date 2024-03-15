@@ -5,14 +5,18 @@ import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 
+import java.io.Serializable;
+
 /**
  *
  * @author matheus.buschermoehl
  */
 @Entity
 @Table(name = "tbemployee")
-public class Employee extends Person {
-    
+public class Employee extends Person implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Column(name = "emp_position", nullable = false)
     private String position;
     

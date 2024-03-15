@@ -16,17 +16,17 @@ public class RequestHandler {
     private static RequestHandler instance;
     private static DAOFactory daoFactory;
     
-    private static CompanyService companyService;
-    private static CustomerService customerService;
-    private static EmployeeService employeeService;
+    private RequestHandlerService companyService;
+    private RequestHandlerService customerService;
+    private RequestHandlerService employeeService;
     
-    private String response;
+    private Object response;
     
     static {
         daoFactory = new JpaDAOFactory();
     }
     
-    public RequestHandler getInstance() {
+    public static RequestHandler getInstance() {
         if(instance == null) {
             instance = new RequestHandler();
         }
@@ -34,66 +34,60 @@ public class RequestHandler {
     }
     
     private RequestHandler() {
-        companyService = new CompanyService(
-                daoFactory.createCompanyDAO()
-        );
-        
-        customerService = new CustomerService(
-                daoFactory.createCustomerDAO()
-        );
-        
-        employeeService = new EmployeeService(
-                daoFactory.createEmployeeDAO()
-        );
-        this.response = "";
+        this.companyService = new CompanyService(daoFactory.createCompanyDAO());
+        this.customerService = new CustomerService(daoFactory.createCustomerDAO());
+        this.employeeService = new EmployeeService(daoFactory.createEmployeeDAO());
+        this.response = null;
     }
     
-    public void handleRequest(String request) {
-        Subject subject = extractSubjectFromRequest(request);
-        
-        switch (subject) {
-            case COMPANY:
-                handleCompanyRequest(request);
-                break;
-            case CUSTOMER:
-                handleCustomerRequest(request);
-                break;
-            case EMPLOYEE:
-                handleEmployeeRequest(request);
-                break;
-            default:
-                throw new RequestHandlerException("Error: subject does not exists.");
+    public Object handleRequest(String request){
+        try {
+            if(request.isBlank()) {
+                throw new RequestHandlerException("Request is null. Server can't proceed.");
+            }
+            Subject subject = extractSubjectFromRequest(request);
+            String methodStr = extractStringMethodFromRequest(request);
+
+            switch (subject) {
+                case COMPANY:
+                    companyService.handleRequest(methodStr, request);
+                    setResponse(companyService.getResponse());
+                    break;
+                case CUSTOMER:
+                    customerService.handleRequest(methodStr, request);
+                    break;
+                case EMPLOYEE:
+                    employeeService.handleRequest(methodStr, request);
+                    break;
+                default:
+                    throw new RequestHandlerException("Error: subject does not exists.");
+            }
+        } catch (RequestHandlerException ex) {
+            ex.printStackTrace();
         }
+        return response;
     }
-    
-    public void handleCompanyRequest(String request) {
-        
-    }
-    
-    public void handleCustomerRequest(String request) {
-        
-    }
-    
-    public void handleEmployeeRequest(String request) {
-        
-    }
-    
-    public Subject extractSubjectFromRequest(String request) {
+
+    private Subject extractSubjectFromRequest(String request) {
         return Subject.fromString(request.split(";")[0]);
+    }
+
+    private String extractStringMethodFromRequest(String request) {
+        return request.split(";")[1];
     }
     
     public void clearResponse() {
         this.response = "";
     }
     
-    public void setResponse(String response) {
+    public void setResponse(Object response) {
         this.response = response;
     }
     
-    public String getAndClearResponse() {
-        String r = this.response;
+    public Object getAndClearResponse() {
+        Object o = this.response;
         clearResponse();
-        return r;
+        return o;
     }
     
     

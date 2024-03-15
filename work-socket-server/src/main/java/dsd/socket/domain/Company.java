@@ -1,7 +1,13 @@
 package dsd.socket.domain;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotNull;
+import lombok.Builder;
+import lombok.Data;
+import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBlank;
 
+import java.io.Serializable;
 import java.util.List;
 
 /**
@@ -10,19 +16,27 @@ import java.util.List;
  */
 @Entity
 @Table(name = "tbcompany")
-public class Company {
-    
+@Data
+@Builder
+public class Company implements Serializable {
+
+    private static final long serialVersionUID = 1L;
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "com_id")
     private Integer id;
-    
+
+    @NotBlank(message = "O CNPJ não pode estar em branco")
     @Column(name = "com_cnpj", unique = true, nullable = false)
     private String cnpj;
-    
+
+    @NotBlank(message = "Razão social não pode estar em branco")
     @Column(name = "com_socialreason", nullable = false)
     private String socialReason;
-    
+
+    @Min(value = 1900, message = "Ano de fundação deve ser maior ou igual a 1900")
+    @NotNull(message = "Ano de fundação não pode ser nulo")
     @Column(name = "com_foundedin")
     private Integer foundedIn;
         
