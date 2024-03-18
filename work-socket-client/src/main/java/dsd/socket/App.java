@@ -25,7 +25,7 @@ public class App {
         try {
             while (true) {
                 // Conectar ao servidor na porta 12345
-                Socket socket = new Socket("192.168.2.104", 12345);
+                Socket socket = new Socket("localhost", 12345);
 
                 // Fluxo de saída para enviar dados para o servidor
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
@@ -35,15 +35,11 @@ public class App {
                 out.println(s.nextLine());
 
                 // Fluxo de entrada para receber resposta do servidor
-                //BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
                 // Ler resposta do servidor
-                //String response = in.readLine();
-                //System.out.println("Resposta do servidor: " + response);
-
-                ObjectInputStream in = new ObjectInputStream(socket.getInputStream());
-                Object o = in.readObject();
-                System.out.println(o.toString());
+                String response = in.readLine();
+                System.out.println("Resposta do servidor: " + response);
                 
                 
                 // Fechar recursos

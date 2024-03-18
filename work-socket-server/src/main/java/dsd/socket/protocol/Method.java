@@ -1,16 +1,15 @@
 package dsd.socket.protocol;
 
-public enum EmployeeMethod {
+public enum Method {
 
     GET,
     LIST,
     INSERT,
     UPDATE,
-    DELETE,
-    RESIGN;
+    DELETE;
 
-    public static EmployeeMethod fromString(String value) {
-        for (EmployeeMethod method : values()) {
+    public static Method fromString(String value) {
+        for (Method method : values()) {
             if (method.name().equalsIgnoreCase(value)) {
                 return method;
             }

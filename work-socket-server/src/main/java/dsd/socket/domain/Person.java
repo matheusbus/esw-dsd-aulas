@@ -3,11 +3,6 @@ package dsd.socket.domain;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-
-/**
- *
- * @author matheus.buschermoehl
- */
 @Entity
 @Table(name = "tbperson")
 @Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)

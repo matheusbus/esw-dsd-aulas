@@ -4,32 +4,34 @@ package dsd.socket.domain;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import lombok.Builder;
 
 import java.io.Serializable;
 
-/**
- *
- * @author matheus.buschermoehl
- */
 @Entity
 @Table(name = "tbcustomer")
+@Builder
 public class Customer extends Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Column(name = "cst_deliveryaddress")
     private String deliveryAddress;
-    
-    @Column(name = "cst_type")
-    private Character customerType;
+
+    @Column(name = "cst_balanceDue")
+    private Double balanceDue;
+
+    @Column(name = "cst_contact")
+    private String contact;
 
     public Customer() {
     }
 
-    public Customer(String deliveryAddress, Character customerType, String cpf, String name, String address) {
+    public Customer(String deliveryAddress, Double balanceDue, String contact, String cpf, String name, String address) {
         super(cpf, name, address);
         this.deliveryAddress = deliveryAddress;
-        this.customerType = customerType;
+        this.contact = contact;
+        this.balanceDue = balanceDue;
     }
 
     public String getDeliveryAddress() {
@@ -40,17 +42,25 @@ public class Customer extends Person implements Serializable {
         this.deliveryAddress = deliveryAddress;
     }
 
-    public Character getCustomerType() {
-        return customerType;
+    public String getContact() {
+        return contact;
     }
 
-    public void setCustomerType(Character customerType) {
-        this.customerType = customerType;
+    public void setContact(String contact) {
+        this.contact = contact;
+    }
+
+    public Double getBalanceDue() {
+        return balanceDue;
+    }
+
+    public void setBalanceDue(Double balanceDue) {
+        this.balanceDue = balanceDue;
     }
 
     @Override
     public String toString() {
-        return "Customer{" + "deliveryAddress=" + deliveryAddress + ", customerType=" + customerType + '}';
+        return "Customer{" + "deliveryAddress=" + deliveryAddress + ", balanceDue=" + balanceDue + '}';
     }
         
 }

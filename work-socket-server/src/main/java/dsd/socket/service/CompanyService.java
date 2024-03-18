@@ -2,7 +2,7 @@ package dsd.socket.service;
 
 import dsd.socket.dao.DAO;
 import dsd.socket.domain.Company;
-import dsd.socket.protocol.CompanyMethod;
+import dsd.socket.protocol.Method;
 import dsd.socket.request.RequestHandlerService;
 
 public class CompanyService implements RequestHandlerService {
@@ -16,7 +16,7 @@ public class CompanyService implements RequestHandlerService {
 
     @Override
     public void handleRequest(String methodStr, String request) {
-        CompanyMethod method = CompanyMethod.fromString(methodStr);
+        Method method = Method.fromString(methodStr);
 
         // VAI CHAMAR OS MÉTODOS PARA CADA TIPO DE MÉTODO
         switch (method) {
@@ -32,8 +32,6 @@ public class CompanyService implements RequestHandlerService {
             case UPDATE:
                 break;
             case DELETE:
-                break;
-            case HIRE:
                 break;
         }
     }
@@ -67,6 +65,7 @@ public class CompanyService implements RequestHandlerService {
         setResponse(company);
     }
 
+    @Override
     public Object getResponse() {
         return response;
     }

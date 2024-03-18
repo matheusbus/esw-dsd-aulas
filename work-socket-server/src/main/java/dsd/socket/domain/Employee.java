@@ -7,10 +7,6 @@ import jakarta.persistence.Table;
 
 import java.io.Serializable;
 
-/**
- *
- * @author matheus.buschermoehl
- */
 @Entity
 @Table(name = "tbemployee")
 public class Employee extends Person implements Serializable {
