@@ -5,7 +5,9 @@ import dsd.socket.domain.Employee;
 import dsd.socket.protocol.Method;
 import dsd.socket.request.RequestHandlerService;
 
-public class EmployeeService implements RequestHandlerService {
+import java.util.List;
+
+public class EmployeeService extends RequestHandlerService {
     
     private final DAO<Employee, String> dao;
 
@@ -13,23 +15,30 @@ public class EmployeeService implements RequestHandlerService {
         this.dao = dao;
     }
 
-    @Override
-    public void handleRequest(String methodStr, String request) {
-        Method method = Method.fromString(methodStr);
 
-        // VAI CHAMAR OS MÉTODOS PARA CADA TIPO DE MÉTODO
-        switch (method) {
-            case GET:
-                break;
-            case LIST:
-                break;
-            case INSERT:
-                break;
-            case UPDATE:
-                break;
-            case DELETE:
-                break;
-        }
+    @Override
+    protected void get(String request) {
+        return;
+    }
+
+    @Override
+    protected void list(String request) {
+        return;
+    }
+
+    @Override
+    protected void insert(String request) {
+
+    }
+
+    @Override
+    protected void update(String request) {
+        return;
+    }
+
+    @Override
+    protected void delete(String request) {
+
     }
 
     @Override

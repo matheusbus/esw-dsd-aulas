@@ -8,6 +8,7 @@ import lombok.Data;
 import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBlank;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -41,7 +42,7 @@ public class Company implements Serializable {
     private Integer foundedIn;
         
     @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
-    private List<Person> people;
+    private List<Person> people = new ArrayList<>();
 
     public Company() {
     }
@@ -110,7 +111,12 @@ public class Company implements Serializable {
 
     @Override
     public String toString() {
-        return "Company{" + "socialReason=" + socialReason + ", cnpj=" + cnpj + ", foundedIn=" + foundedIn + ", people=" + people + '}';
+        return new StringBuilder()
+                .append(cnpj + ";")
+                .append(socialReason + ";")
+                .append(foundedIn + ";")
+                .append(people == null ? "" : people.stream().toString())
+                .toString();
     }
     
 }

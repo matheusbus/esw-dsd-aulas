@@ -15,11 +15,9 @@ public class RequestHandler {
     
     private static RequestHandler instance;
     private static DAOFactory daoFactory;
-    
     private RequestHandlerService companyService;
     private RequestHandlerService customerService;
     private RequestHandlerService employeeService;
-    
     private Object response;
     
     static {
@@ -55,15 +53,17 @@ public class RequestHandler {
                     break;
                 case CUSTOMER:
                     customerService.handleRequest(methodStr, request);
+                    setResponse(customerService.getResponse());
                     break;
                 case EMPLOYEE:
                     employeeService.handleRequest(methodStr, request);
+                    setResponse(employeeService.getResponse());
                     break;
                 default:
                     throw new RequestHandlerException("Error: subject does not exists.");
             }
         } catch (RequestHandlerException ex) {
-            ex.printStackTrace();
+            setResponse(ex.getMessage());
         }
         return response;
     }

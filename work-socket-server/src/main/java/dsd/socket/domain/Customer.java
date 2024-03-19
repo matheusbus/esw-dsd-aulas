@@ -10,7 +10,6 @@ import java.io.Serializable;
 
 @Entity
 @Table(name = "tbcustomer")
-@Builder
 public class Customer extends Person implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -27,11 +26,11 @@ public class Customer extends Person implements Serializable {
     public Customer() {
     }
 
-    public Customer(String deliveryAddress, Double balanceDue, String contact, String cpf, String name, String address) {
+    public Customer(String cpf, String name, String address, String deliveryAddress, Double balanceDue, String contact) {
         super(cpf, name, address);
         this.deliveryAddress = deliveryAddress;
-        this.contact = contact;
         this.balanceDue = balanceDue;
+        this.contact = contact;
     }
 
     public String getDeliveryAddress() {
@@ -62,5 +61,4 @@ public class Customer extends Person implements Serializable {
     public String toString() {
         return "Customer{" + "deliveryAddress=" + deliveryAddress + ", balanceDue=" + balanceDue + '}';
     }
-        
 }

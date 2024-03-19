@@ -5,13 +5,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="862f1dfe-b127-4871-a301-0b23047c3ea4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/protocol/Status.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/dao/JpaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/dao/JpaDAO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Company.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/protocol/CompanyMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/protocol/Method.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/protocol/CustomerMethod.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/protocol/EmployeeMethod.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/request/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/request/RequestHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/request/RequestHandlerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/request/RequestHandlerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/server/WorkSocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/server/WorkSocketServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/service/CompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/service/CompanyService.java" afterDir="false" />
@@ -28,6 +27,7 @@
       <list>
         <option value="Class" />
         <option value="Interface" />
+        <option value="Enum" />
       </list>
     </option>
   </component>
@@ -44,7 +44,7 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.App.executor": "Run",
+    "Application.App.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
@@ -116,9 +116,39 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dsd/socket/service/CompanyService.java</url>
+          <line>56</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dsd/socket/service/CompanyService.java</url>
+          <line>78</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dsd/socket/service/CompanyService.java</url>
+          <line>21</line>
+          <option name="timeStamp" value="13" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dsd/socket/service/CompanyService.java</url>
+          <line>29</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dsd/socket/service/CompanyService.java</url>
+          <line>35</line>
+          <option name="timeStamp" value="15" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dsd/socket/server/WorkSocketServer.java</url>
-          <line>46</line>
-          <option name="timeStamp" value="4" />
+          <line>47</line>
+          <option name="timeStamp" value="16" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/dsd/socket/server/WorkSocketServer.java</url>
+          <line>52</line>
+          <option name="timeStamp" value="17" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

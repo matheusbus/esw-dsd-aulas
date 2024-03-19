@@ -5,7 +5,9 @@ import dsd.socket.domain.Company;
 import dsd.socket.protocol.Method;
 import dsd.socket.request.RequestHandlerService;
 
-public class CompanyService implements RequestHandlerService {
+import java.util.List;
+
+public class CompanyService extends RequestHandlerService {
 
     private final DAO<Company, Integer> dao;
     private Object response;
@@ -14,29 +16,23 @@ public class CompanyService implements RequestHandlerService {
         this.dao = dao;
     }
 
-    @Override
-    public void handleRequest(String methodStr, String request) {
-        Method method = Method.fromString(methodStr);
 
-        // VAI CHAMAR OS MÉTODOS PARA CADA TIPO DE MÉTODO
-        switch (method) {
-            case GET:
-                findById(request);
-                break;
-            case LIST:
-                list();
-                break;
-            case INSERT:
-                createCompany(request);
-                break;
-            case UPDATE:
-                break;
-            case DELETE:
-                break;
-        }
+    @Override
+    public void get(String request) {
+        String requestData[] = request.split(";");
+
+        Company company = dao.find(Integer.parseInt(requestData[2]));
+        setResponse(company.toString());
     }
 
-    private void createCompany(String request) {
+    @Override
+    public void list(String request) {
+        List<Company> companies = dao.findAll();
+        setResponse(companies.stream().toString());
+    }
+
+    @Override
+    public void insert(String request) {
         String requestData[] = request.split(";");
 
         String cnpj = requestData[2];
@@ -54,15 +50,40 @@ public class CompanyService implements RequestHandlerService {
         setResponse(newCompany);
     }
 
-    private void list() {
-
-    }
-
-    private void findById(String request) {
+    @Override
+    public void update(String request) {
         String requestData[] = request.split(";");
 
-        Company company = dao.find(Integer.parseInt(requestData[2]));
-        setResponse(company);
+        Company companyToUpdate = dao.find(Integer.parseInt(requestData[2]));
+        if(companyToUpdate == null) {
+            setResponse("Company was not found.");
+            return;
+        }
+
+        String cnpj = requestData[3];
+        String socialReason = requestData[4];
+        Integer foundedIn = Integer.parseInt(requestData[5]);
+
+        companyToUpdate.setCnpj(cnpj);
+        companyToUpdate.setSocialReason(socialReason);
+        companyToUpdate.setFoundedIn(foundedIn);
+
+        dao.update(companyToUpdate);
+        setResponse(companyToUpdate.toString());
+    }
+
+    @Override
+    public void delete(String request) {
+        String requestData[] = request.split(";");
+
+        Company companyToDelete = dao.find(Integer.parseInt(requestData[2]));
+        if(companyToDelete == null) {
+            setResponse("Company was not found.");
+            return;
+        }
+
+        dao.delete(companyToDelete.getId());
+        setResponse("Company deleted successfully!");
     }
 
     @Override

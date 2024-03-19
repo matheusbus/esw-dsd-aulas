@@ -58,7 +58,7 @@ public class WorkSocketServer {
                     // Fluxo de saída para enviar resposta para o cliente
                     PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
                     // Enviar resposta para o cliente
-                    out.println("Mensagem recebida com sucesso!");
+                    out.println(response.toString());
 
                     // Enviar objeto
 //                    ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());

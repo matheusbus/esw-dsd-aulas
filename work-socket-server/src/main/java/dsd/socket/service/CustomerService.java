@@ -6,7 +6,9 @@ import dsd.socket.domain.Person;
 import dsd.socket.protocol.Method;
 import dsd.socket.request.RequestHandlerService;
 
-public class CustomerService implements RequestHandlerService {
+import java.util.List;
+
+public class CustomerService extends RequestHandlerService {
     
     private final DAO<Customer, String> dao;
 
@@ -17,23 +19,28 @@ public class CustomerService implements RequestHandlerService {
     }
 
     @Override
-    public void handleRequest(String methodStr, String request) {
-        Method method = Method.fromString(methodStr);
+    protected void get(String request) {
+        return;
+    }
 
-        // VAI CHAMAR OS MÉTODOS PARA CADA TIPO DE MÉTODO
-        switch (method) {
-            case GET:
-                break;
-            case LIST:
-                break;
-            case INSERT:
-                createCustomer(request);
-                break;
-            case UPDATE:
-                break;
-            case DELETE:
-                break;
-        }
+    @Override
+    protected void list(String request) {
+        return;
+    }
+
+    @Override
+    protected void insert(String request) {
+
+    }
+
+    @Override
+    protected void update(String request) {
+        return;
+    }
+
+    @Override
+    protected void delete(String request) {
+
     }
 
     public void createCustomer(String request) {
@@ -46,12 +53,10 @@ public class CustomerService implements RequestHandlerService {
         Double balanceDue = Double.valueOf(requestData[5]);
         String contact = requestData[6];
 
-        Customer newCustomer = new Customer(deliveryAddress, balanceDue, contact, cpf, name, address);
+        Customer newCustomer = new Customer(cpf, name, address, deliveryAddress, balanceDue, contact);
         dao.insert(newCustomer);
         setResponse(newCustomer);
     }
-
-
 
     @Override
     public Object getResponse() {
