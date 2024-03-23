@@ -5,6 +5,7 @@ import dsd.socket.request.RequestHandlerException;
 import org.h2.tools.Server;
 
 import java.io.*;
+import java.net.InetAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.sql.SQLException;
@@ -41,11 +42,12 @@ public class WorkSocketServer {
         try {
             // MUDAR OS SYSTEM.OUT.PRINT PARA LOG4J
             ServerSocket serverSocket = new ServerSocket(port);
+            System.out.println("Listening on <"+InetAddress.getLocalHost().getHostAddress()+":"+serverSocket.getLocalPort()+">");
             System.out.println("Server waiting for requests...");
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-                System.out.println("Connection established with client <"+clientSocket.getInetAddress()+">");
+                System.out.println("Connection established with client <"+clientSocket.getLocalPort()+">");
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
@@ -54,16 +56,10 @@ public class WorkSocketServer {
 
                 try {
                     Object response = requestHandler.handleRequest(request);
-
-                    // Fluxo de saída para enviar resposta para o cliente
                     PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
+
                     // Enviar resposta para o cliente
                     out.println(response.toString());
-
-                    // Enviar objeto
-//                    ObjectOutputStream out = new ObjectOutputStream(clientSocket.getOutputStream());
-//                    out.writeObject(response);
-//                    out.flush();
 
                     // Fechar recursos
                     out.close();

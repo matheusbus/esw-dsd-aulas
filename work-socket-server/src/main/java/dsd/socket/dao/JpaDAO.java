@@ -32,9 +32,7 @@ public abstract class JpaDAO<T, ID> implements DAO<T, ID> {
 
     @Override
     public T insert(T entity) {
-        beginTrans();
         em.persist(entity);
-        commitTrans();
         return entity;
     }
 
@@ -50,7 +48,7 @@ public abstract class JpaDAO<T, ID> implements DAO<T, ID> {
         String jpql = "select e from " + clazz.getName() + " e";
         TypedQuery<T> query = em.createQuery(jpql, clazz);
 
-        if(quantity == -1) {
+        if(quantity != -1) {
             query.setMaxResults(quantity);
         }
 
@@ -86,6 +84,11 @@ public abstract class JpaDAO<T, ID> implements DAO<T, ID> {
 
     public DAO<T, ID> commitTrans() {
         em.getTransaction().commit();
+        return this;
+    }
+
+    public DAO<T, ID> rollback() {
+        em.getTransaction().rollback();
         return this;
     }
 

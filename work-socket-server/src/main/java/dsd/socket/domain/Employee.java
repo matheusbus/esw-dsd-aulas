@@ -25,7 +25,7 @@ public class Employee extends Person implements Serializable {
     public Employee() {
     }
 
-    public Employee(String position, Double salary, Boolean active, String cpf, String name, String address) {
+    public Employee(String cpf, String name, String address, String position, Double salary, Boolean active) {
         super(cpf, name, address);
         this.position = position;
         this.salary = salary;
@@ -58,7 +58,16 @@ public class Employee extends Person implements Serializable {
 
     @Override
     public String toString() {
-        return "Employee{" + "position=" + position + ", salary=" + salary + ", active=" + active + '}';
+        return new StringBuilder()
+            .append(this.getClass().getSimpleName() + ";")
+            .append(this.getCpf() + ";")
+            .append(this.getName() + ";")
+            .append(this.getAddress() + ";")
+            .append(this.getCompany().toString() + ";")
+            .append(this.getPosition() + ";")
+            .append(this.getSalary() + ";")
+            .append(this.getActive().toString() + ";")
+            .toString();
     }
     
 }

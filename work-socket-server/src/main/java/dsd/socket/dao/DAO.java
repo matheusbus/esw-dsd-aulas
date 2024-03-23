@@ -10,4 +10,8 @@ public interface DAO<T, ID> {
     void delete(ID id);
     T find(ID id);
 
+    DAO<T, ID>  beginTrans();
+    DAO<T, ID>  commitTrans();
+    DAO<T, ID>  rollback();
+
 }

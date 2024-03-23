@@ -10,6 +10,7 @@ import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBl
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  *
@@ -111,12 +112,22 @@ public class Company implements Serializable {
 
     @Override
     public String toString() {
-        return new StringBuilder()
-                .append(cnpj + ";")
-                .append(socialReason + ";")
-                .append(foundedIn + ";")
-                .append(people == null ? "" : people.stream().toString())
-                .toString();
+        StringBuilder result = new StringBuilder()
+                .append(id).append(";")
+                .append(cnpj).append(";")
+                .append(socialReason).append(";")
+                .append(foundedIn).append(";");
+
+        if (people != null && !people.isEmpty()) {
+            String peopleAsString = people.stream()
+                    .map(Object::toString)
+                    .collect(Collectors.joining(";"));
+
+            result.append("[").append(peopleAsString).append("]");
+        } else {
+            result.append("[]");
+        }
+
+        return result.toString();
     }
-    
 }

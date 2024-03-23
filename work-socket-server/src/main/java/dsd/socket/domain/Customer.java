@@ -59,6 +59,15 @@ public class Customer extends Person implements Serializable {
 
     @Override
     public String toString() {
-        return "Customer{" + "deliveryAddress=" + deliveryAddress + ", balanceDue=" + balanceDue + '}';
+        return new StringBuilder()
+            .append(this.getClass().getSimpleName() + ";")
+            .append(this.getCpf() + ";")
+            .append(this.getName() + ";")
+            .append(this.getAddress() + ";")
+            .append(this.getCompany().toString() + ";")
+            .append(this.getDeliveryAddress() + ";")
+            .append(this.getBalanceDue() + ";")
+            .append(this.getContact() + ";")
+            .toString();
     }
 }

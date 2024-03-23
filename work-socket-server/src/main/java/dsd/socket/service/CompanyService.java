@@ -2,15 +2,17 @@ package dsd.socket.service;
 
 import dsd.socket.dao.DAO;
 import dsd.socket.domain.Company;
+import dsd.socket.domain.Customer;
 import dsd.socket.protocol.Method;
 import dsd.socket.request.RequestHandlerService;
+import jakarta.validation.ConstraintViolationException;
 
 import java.util.List;
+import java.util.Optional;
 
 public class CompanyService extends RequestHandlerService {
 
     private final DAO<Company, Integer> dao;
-    private Object response;
 
     public CompanyService(DAO<Company, Integer> dao) {
         this.dao = dao;
@@ -19,16 +21,40 @@ public class CompanyService extends RequestHandlerService {
 
     @Override
     public void get(String request) {
-        String requestData[] = request.split(";");
+        Integer id = Integer.parseInt(extractIdFromRequest(request));
 
-        Company company = dao.find(Integer.parseInt(requestData[2]));
-        setResponse(company.toString());
+        List<Company> companies = dao.findAll();
+
+        if(companies.isEmpty()) {
+            setResponse(new String("Sem empresas cadastradas."));
+        }
+
+        Optional<Company> company = companies.stream()
+                .filter(c -> c.getId().equals(id))
+                .findFirst();
+
+        if(company.isEmpty()) {
+            setResponse(new String("Empresa não encontrada."));
+            return;
+        }
+
+        setResponse(company.get().toString());
     }
 
     @Override
     public void list(String request) {
         List<Company> companies = dao.findAll();
-        setResponse(companies.stream().toString());
+
+        if(companies.isEmpty()) {
+            setResponse(0);
+            return;
+        }
+
+        StringBuilder builder = new StringBuilder();
+        builder.append(companies.size());
+        companies.forEach(company -> builder.append(company.toString()));
+
+        setResponse(builder.toString());
     }
 
     @Override
@@ -39,15 +65,14 @@ public class CompanyService extends RequestHandlerService {
         String socialReason = requestData[3];
         Integer foundedIn = Integer.parseInt(requestData[4]);
 
-        Company newCompany = Company.builder()
-                .id(null)
-                .cnpj(cnpj)
-                .socialReason(socialReason)
-                .foundedIn(foundedIn)
-                .build();
+        Company newCompany = new Company(null, cnpj, socialReason, foundedIn, null);
 
-        dao.insert(newCompany);
-        setResponse(newCompany);
+        try {
+            dao.insert(newCompany);
+            setResponse(newCompany);
+        } catch (Exception ex) {
+            setResponse(ex.getMessage());
+        }
     }
 
     @Override
@@ -74,24 +99,28 @@ public class CompanyService extends RequestHandlerService {
 
     @Override
     public void delete(String request) {
-        String requestData[] = request.split(";");
+        Integer id = Integer.parseInt(extractIdFromRequest(request));
 
-        Company companyToDelete = dao.find(Integer.parseInt(requestData[2]));
-        if(companyToDelete == null) {
-            setResponse("Company was not found.");
+        List<Company> companies = dao.findAll();
+
+        if(companies.isEmpty()) {
+            setResponse(new String("Sem empresas cadastradas."));
+        }
+
+        Optional<Company> company = companies.stream()
+                .filter(c -> c.getId().equals(id))
+                .findFirst();
+
+        if(company.isEmpty()) {
+            setResponse(new String("Empresa não encontrada."));
             return;
         }
 
-        dao.delete(companyToDelete.getId());
-        setResponse("Company deleted successfully!");
-    }
-
-    @Override
-    public Object getResponse() {
-        return response;
-    }
-
-    public void setResponse(Object response) {
-        this.response = response;
+        try {
+            dao.delete(company.get().getId());
+            setResponse("Empresa removida com sucesso.");
+        } catch (Exception ex) {
+            setResponse(ex.getMessage());
+        }
     }
 }

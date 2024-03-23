@@ -55,7 +55,24 @@ public abstract class Person implements Serializable {
     public void setAddress(String address) {
         this.address = address;
     }
-    
-    
-    
+
+    public Company getCompany() {
+        return company;
+    }
+
+    public void setCompany(Company company) {
+        this.company = company;
+        this.company.addPerson(this);
+    }
+
+    @Override
+    public String toString() {
+        return new StringBuilder()
+            .append(this.getClass().getSimpleName() + ";")
+            .append(cpf + ";")
+            .append(name + ";")
+            .append(address + ";")
+            .append(company.toString() + ";")
+            .toString();
+    }
 }
