@@ -38,10 +38,11 @@ public class WorkSocketServer {
         this.requestHandler = RequestHandler.getInstance();
     }
 
-    public void start(Integer port) {
+    public void start(Integer port) throws IOException {
+        ServerSocket serverSocket = null;
         try {
             // MUDAR OS SYSTEM.OUT.PRINT PARA LOG4J
-            ServerSocket serverSocket = new ServerSocket(port);
+            serverSocket = new ServerSocket(port);
             System.out.println("Listening on <"+InetAddress.getLocalHost().getHostAddress()+":"+serverSocket.getLocalPort()+">");
             System.out.println("Server waiting for requests...");
 
@@ -55,11 +56,17 @@ public class WorkSocketServer {
                 System.out.println("Request received from client <"+clientSocket.getInetAddress()+">: " + request);
 
                 try {
-                    Object response = requestHandler.handleRequest(request);
+                    Object response;
                     PrintWriter out = new PrintWriter(clientSocket.getOutputStream(), true);
 
-                    // Enviar resposta para o cliente
-                    out.println(response.toString());
+                    if(!request.equals("Handshake message.")) {
+                        response = requestHandler.handleRequest(request);
+
+                        // Enviar resposta para o cliente
+                        out.println(response.toString());
+                    } else {
+                        out.println("Connection successfully!");
+                    }
 
                     // Fechar recursos
                     out.close();
@@ -72,6 +79,8 @@ public class WorkSocketServer {
 
         } catch (IOException e) {
             e.printStackTrace();
+        } finally {
+            if(serverSocket != null) serverSocket.close();
         }
     }
     

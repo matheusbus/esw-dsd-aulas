@@ -24,7 +24,7 @@ public abstract class BaseView extends javax.swing.JFrame {
     // Método que faz a organização do layout e é chamado no construtor.
     public abstract void initLayout();
     
-    public int criaQuestaoPrgunta(String mensagem, String titulo){
+    public int question(String mensagem, String titulo){
         return JOptionPane.showConfirmDialog(rootPane, mensagem, titulo, WIDTH);
     }
     

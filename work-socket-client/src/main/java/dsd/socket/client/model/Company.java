@@ -84,6 +84,10 @@ public class Company {
     public void setPeople(List<Person> people) {
         this.people = people;
     }
+    
+    public Object[] getData() {
+        return new Object[]{this.id, this.cnpj, this.socialReason, this.foundedIn};
+    }
 
     @Override
     public String toString() {

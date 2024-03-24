@@ -28,7 +28,7 @@ public class WorkSocketClient {
         }
         return instance;
     }
-    
+
     public static WorkSocketClient getInstance() {
         return instance;
     }
@@ -40,19 +40,32 @@ public class WorkSocketClient {
 
     public void testConnection() throws IOException {
         Socket socket = new Socket(address, port);
+        PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+        out.println("Handshake message.");
+        BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+
+        String response = in.readLine();
+        System.out.println("Resposta do servidor: " + response);
+        in.close();
+        out.close();
     }
 
     public void sendRequest(Request request) {
         try {
-            Socket socket = new Socket(address, port);
+            try (Socket socket = new Socket(address, port)) {
 
-            PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
-            // Enviar request através do 
-            // out.println(request.toString());
-            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+                PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
+                out.println(request.toString());
+                BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 
-            String response = in.readLine();
-            System.out.println("Resposta do servidor: " + response);
+                String response = in.readLine();
+                request.setResponse(response);
+
+                System.out.println("Resposta do servidor: " + response);
+
+                in.close();
+                out.close();
+            }
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
         }

@@ -146,8 +146,8 @@ public class Company implements Serializable {
 
         if (people != null && !people.isEmpty()) {
             String peopleAsString = people.stream()
-                    .map(person -> person.toString())
-                    .collect(Collectors.joining(","));
+                    .map(person -> person.toStringWithNoCompany().replace(";", "%%"))
+                    .collect(Collectors.joining("##"));
 
             result.append("[").append(peopleAsString).append("]");
         } else {

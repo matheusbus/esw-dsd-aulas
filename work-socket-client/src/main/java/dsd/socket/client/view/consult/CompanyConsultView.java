@@ -2,10 +2,13 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package dsd.socket.client.view;
+package dsd.socket.client.view.consult;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialOceanicIJTheme;
+import dsd.socket.client.model.Company;
 import dsd.socket.client.view.base.BaseConsultView;
+import java.awt.event.ActionListener;
+import java.util.Map;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -15,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
 public final class CompanyConsultView extends BaseConsultView {
 
     private DefaultTableModel grid;
-    
+
     public CompanyConsultView() {
         initLayout();
     }
@@ -25,7 +28,7 @@ public final class CompanyConsultView extends BaseConsultView {
         initComponents();
         this.setLocationRelativeTo(null);
         this.setResizable(false);
-        
+
         grid = (DefaultTableModel) tblCompany.getModel();
     }
 
@@ -42,10 +45,10 @@ public final class CompanyConsultView extends BaseConsultView {
         btnSelect = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
+        btnRemove = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Company [Consult]");
-        setPreferredSize(new java.awt.Dimension(940, 500));
 
         tblCompany.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -104,6 +107,9 @@ public final class CompanyConsultView extends BaseConsultView {
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         lblTitle.setText("Companies");
 
+        btnRemove.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRemove.setText("Remove");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -113,35 +119,41 @@ public final class CompanyConsultView extends BaseConsultView {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblId)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(btnSearch)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
-                        .addComponent(btnRegister)
-                        .addGap(69, 69, 69)
-                        .addComponent(btnSelect)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnUpdate))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblTitle)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGap(11, 11, 11)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblTitle)
+                                .addGap(0, 0, Short.MAX_VALUE))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(lblId)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnSearch)
+                                .addGap(36, 36, 36)
+                                .addComponent(btnRegister)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnSelect)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(btnUpdate)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(btnRemove)))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(15, 15, 15)
+                .addContainerGap()
                 .addComponent(lblTitle)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 47, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnSearch)
                     .addComponent(btnRegister)
                     .addComponent(btnUpdate)
-                    .addComponent(btnSelect))
+                    .addComponent(btnSelect)
+                    .addComponent(btnRemove))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -150,9 +162,6 @@ public final class CompanyConsultView extends BaseConsultView {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    /**
-     * @param args the command line arguments
-     */
     public static void main(String args[]) {
         FlatMaterialOceanicIJTheme.setup();
 
@@ -163,7 +172,27 @@ public final class CompanyConsultView extends BaseConsultView {
             }
         });
     }
-
+    
+    public void addActionBtnRegister(ActionListener action) {
+        btnRegister.addActionListener(action);
+    }
+    
+    public void addActionBtnUpdate(ActionListener action) {
+        btnUpdate.addActionListener(action);
+    }
+    
+    public void addActionBtnRemove(ActionListener action) {
+        btnRemove.addActionListener(action);
+    }
+    
+    public void addActionBtnSelect(ActionListener action) {
+        btnSelect.addActionListener(action);
+    }
+    
+    public void addActionBtnSearch(ActionListener action) {
+        btnSearch.addActionListener(action);
+    }
+    
     @Override
     public void clearSelection() {
         tblCompany.clearSelection();
@@ -174,8 +203,42 @@ public final class CompanyConsultView extends BaseConsultView {
         grid.setRowCount(0);
     }
 
+    public void setBtnSelect(Boolean bool) {
+        this.btnSelect.setEnabled(bool);
+    }
+    
+    public void fillTable(Map<Integer, Company> companies) {
+        for (Map.Entry<Integer, Company> entry : companies.entrySet()) {
+            grid.addRow(entry.getValue().getData());
+        }
+    }
+    
+    public String getIdTableRecord() {
+        return (String) grid.getValueAt(tblCompany.getSelectedRow(), 0);
+    }
+    
+    public String getFilter() {
+        return this.txtSearch.getText();
+    }
+    
+    public boolean searchTable(String id) {
+        int incidencia = -1;
+        for (int i = 0; i <= tblCompany.getRowCount() - 1; i++) {
+            if (grid.getValueAt(i, 0).equals(id)) {
+                incidencia = i;
+            }
+        }
+        if (incidencia != -1) {
+            tblCompany.setRowSelectionInterval(incidencia, incidencia);
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnRegister;
+    private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnSearch;
     private javax.swing.JButton btnSelect;
     private javax.swing.JButton btnUpdate;
@@ -185,4 +248,5 @@ public final class CompanyConsultView extends BaseConsultView {
     private javax.swing.JTable tblCompany;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
+
 }

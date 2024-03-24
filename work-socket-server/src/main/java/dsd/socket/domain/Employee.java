@@ -83,5 +83,19 @@ public class Employee extends Person implements Serializable {
             .append(this.getActive().toString())
             .toString();
     }
+
+    @Override
+    public String toStringWithNoCompany() {
+
+        return new StringBuilder()
+                .append(this.getClass().getSimpleName() + ";")
+                .append(this.getCpf() + ";")
+                .append(this.getName() + ";")
+                .append(this.getAddress() + ";")
+                .append(this.getPosition() + ";")
+                .append(this.getSalary() + ";")
+                .append(this.getActive().toString())
+                .toString();
+    }
     
 }

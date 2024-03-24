@@ -91,7 +91,21 @@ public class Customer extends Person implements Serializable {
             .append(companyString + ";")
             .append(this.getDeliveryAddress() + ";")
             .append(this.getBalanceDue() + ";")
-            .append(this.getContact() + ";")
+            .append(this.getContact())
             .toString();
+    }
+
+    @Override
+    public String toStringWithNoCompany() {
+
+        return new StringBuilder()
+                .append(this.getClass().getSimpleName() + ";")
+                .append(this.getCpf() + ";")
+                .append(this.getName() + ";")
+                .append(this.getAddress() + ";")
+                .append(this.getDeliveryAddress() + ";")
+                .append(this.getBalanceDue() + ";")
+                .append(this.getContact())
+                .toString();
     }
 }

@@ -55,7 +55,8 @@ public final class MainController implements BaseController {
     }
     
     public void actionBtnCompanyConsult() {
-        System.out.println("dsd.socket.client.controller.MainController.actionBtnCompanyConsult()");
+        CompanyConsultController companyConsultController = new CompanyConsultController();
+        companyConsultController.showFrame();
     }
     
     public void actionBtnCompanyRegister() {

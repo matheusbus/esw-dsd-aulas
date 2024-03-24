@@ -74,8 +74,15 @@ public class CompanyService extends RequestHandlerService {
         }
 
         StringBuilder builder = new StringBuilder();
-        builder.append(companies.size());
-        companies.forEach(company -> builder.append(company.toString() + ","));
+        builder.append(companies.size() + "::");
+
+        int lastIndex = companies.size() - 1;
+        for (int i = 0; i < companies.size(); i++) {
+            builder.append(companies.get(i).toString());
+            if (i != lastIndex) {
+                builder.append("::");
+            }
+        }
 
         setResponse(builder.toString());
     }

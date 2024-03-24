@@ -88,4 +88,13 @@ public abstract class Person implements Serializable {
             .append(companyString)
             .toString();
     }
+
+    public String toStringWithNoCompany() {
+        return new StringBuilder()
+                .append(this.getClass().getSimpleName() + ";")
+                .append(cpf + ";")
+                .append(name + ";")
+                .append(address + ";")
+                .toString();
+    }
 }

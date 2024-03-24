@@ -13,6 +13,9 @@ public class Employee extends Person {
     private String position;
     private Double salary;
     private Boolean active;
+
+    public Employee() {
+    }
     
     public Employee(String cpf, String name, String address, String position, Double salary, Boolean active) {
         super(cpf, name, address);

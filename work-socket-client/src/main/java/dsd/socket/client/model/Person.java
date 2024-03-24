@@ -56,6 +56,10 @@ public class Person {
         this.company = company;
         this.company.addPerson(this);
     }
+    
+    public Object[] getData() {
+        return new Object[]{this.cpf, this.name, this.address};
+    }
 
     @Override
     public String toString() {

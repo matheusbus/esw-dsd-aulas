@@ -2,18 +2,14 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dsd.socket.client.infra.request;
-
-import dsd.socket.client.model.Company;
+package dsd.socket.client.controller.base;
 
 /**
  *
  * @author Matheus
  */
-public class CompanyRequest extends Request {
-
-    public CompanyRequest() {
-        super();
-        this.request = "COMPANY";
-    }
+public interface BaseRegisterController extends BaseController {
+    
+    public boolean verifyNullFields();
+    
 }

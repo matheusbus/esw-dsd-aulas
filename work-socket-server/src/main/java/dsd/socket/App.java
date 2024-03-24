@@ -2,10 +2,16 @@ package dsd.socket;
 
 import dsd.socket.server.WorkSocketServer;
 
+import java.io.IOException;
+
 public class App {
 
     public static void main(String[] args) {
-        WorkSocketServer.getInstance().start(12345);
+        try {
+            WorkSocketServer.getInstance().start(12345);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
 }
