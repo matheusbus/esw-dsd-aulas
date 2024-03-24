@@ -21,7 +21,7 @@ public abstract class Person implements Serializable {
     private String address;
     
     @ManyToOne(fetch = FetchType.EAGER)
-    private Company company;
+    protected Company company;
 
     public Person() {
     }
@@ -67,12 +67,25 @@ public abstract class Person implements Serializable {
 
     @Override
     public String toString() {
+        StringBuilder companyString = new StringBuilder();
+
+        if(company == null) {
+            companyString.append("[]");
+        } else {
+            companyString = new StringBuilder()
+                    .append("[")
+                    .append(company.getId()).append(";")
+                    .append(company.getCnpj()).append(";")
+                    .append(company.getSocialReason()).append(";")
+                    .append(company.getFoundedIn())
+                    .append("]");
+        }
         return new StringBuilder()
             .append(this.getClass().getSimpleName() + ";")
             .append(cpf + ";")
             .append(name + ";")
             .append(address + ";")
-            .append(company.toString() + ";")
+            .append(companyString)
             .toString();
     }
 }

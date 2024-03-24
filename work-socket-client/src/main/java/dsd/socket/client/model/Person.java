@@ -10,4 +10,10 @@ package dsd.socket.client.model;
  */
 public class Person {
     
+    private String cpf;
+    private String name;
+    private String address;
+    private Companny company;
+    
+    
 }

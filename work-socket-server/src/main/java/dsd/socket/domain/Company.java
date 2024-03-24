@@ -10,6 +10,7 @@ import org.apache.logging.log4j.core.config.plugins.validation.constraints.NotBl
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.stream.Collectors;
 
 /**
@@ -25,7 +26,8 @@ public class Company implements Serializable {
     private static final long serialVersionUID = 1L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tbcompany_id_seq")
+    @SequenceGenerator(name="tbcompany_id_seq", sequenceName = "tbcompany_id_seq", initialValue = 4)
     @Column(name = "com_id")
     private Integer id;
 
@@ -42,7 +44,7 @@ public class Company implements Serializable {
     @Column(name = "com_foundedin")
     private Integer foundedIn;
         
-    @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
     private List<Person> people = new ArrayList<>();
 
     public Company() {
@@ -110,6 +112,30 @@ public class Company implements Serializable {
         this.people = people;
     }
 
+    public Double calculatePayRoll() {
+        AtomicReference<Double> payRoll = new AtomicReference<>(0.00);
+
+        people.forEach(p -> {
+            if(p instanceof Employee) {
+                payRoll.updateAndGet(v -> v + ((Employee) p).getSalary());
+            }
+        });
+
+        return payRoll.get();
+    }
+
+    public Double calculateAccountsReceivable() {
+        AtomicReference<Double> payRoll = new AtomicReference<>(0.00);
+
+        people.forEach(p -> {
+            if(p instanceof Customer) {
+                payRoll.updateAndGet(v -> v + ((Customer) p).getBalanceDue());
+            }
+        });
+
+        return payRoll.get();
+    }
+
     @Override
     public String toString() {
         StringBuilder result = new StringBuilder()
@@ -120,8 +146,8 @@ public class Company implements Serializable {
 
         if (people != null && !people.isEmpty()) {
             String peopleAsString = people.stream()
-                    .map(Object::toString)
-                    .collect(Collectors.joining(";"));
+                    .map(person -> person.toString())
+                    .collect(Collectors.joining(","));
 
             result.append("[").append(peopleAsString).append("]");
         } else {

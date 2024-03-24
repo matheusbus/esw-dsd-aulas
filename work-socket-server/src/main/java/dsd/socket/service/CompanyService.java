@@ -2,10 +2,8 @@ package dsd.socket.service;
 
 import dsd.socket.dao.DAO;
 import dsd.socket.domain.Company;
-import dsd.socket.domain.Customer;
-import dsd.socket.protocol.Method;
+import dsd.socket.protocol.CompanyMethod;
 import dsd.socket.request.RequestHandlerService;
-import jakarta.validation.ConstraintViolationException;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,6 +16,31 @@ public class CompanyService extends RequestHandlerService {
         this.dao = dao;
     }
 
+    @Override
+    protected void handleRequest(String methodStr, String request) {
+        CompanyMethod method = CompanyMethod.fromString(methodStr);
+
+        switch (method) {
+            case GET:
+                get(request);
+                break;
+            case LIST:
+                list(request);
+                break;
+            case INSERT:
+                insert(request);
+                break;
+            case UPDATE:
+                update(request);
+                break;
+            case DELETE:
+                delete(request);
+                break;
+            case PAYROLL:
+                calculatePayRoll(request);
+                break;
+        }
+    }
 
     @Override
     public void get(String request) {
@@ -52,7 +75,7 @@ public class CompanyService extends RequestHandlerService {
 
         StringBuilder builder = new StringBuilder();
         builder.append(companies.size());
-        companies.forEach(company -> builder.append(company.toString()));
+        companies.forEach(company -> builder.append(company.toString() + ","));
 
         setResponse(builder.toString());
     }
@@ -68,9 +91,13 @@ public class CompanyService extends RequestHandlerService {
         Company newCompany = new Company(null, cnpj, socialReason, foundedIn, null);
 
         try {
+            dao.beginTrans();
             dao.insert(newCompany);
+            dao.commitTrans();
+
             setResponse(newCompany);
         } catch (Exception ex) {
+            dao.rollback();
             setResponse(ex.getMessage());
         }
     }
@@ -93,8 +120,15 @@ public class CompanyService extends RequestHandlerService {
         companyToUpdate.setSocialReason(socialReason);
         companyToUpdate.setFoundedIn(foundedIn);
 
-        dao.update(companyToUpdate);
-        setResponse(companyToUpdate.toString());
+        try {
+            dao.beginTrans();
+            dao.update(companyToUpdate);
+            dao.commitTrans();
+            setResponse(companyToUpdate.toString());
+        } catch (Exception ex) {
+            dao.rollback();
+            setResponse(ex.getMessage());
+        }
     }
 
     @Override
@@ -117,10 +151,27 @@ public class CompanyService extends RequestHandlerService {
         }
 
         try {
+            dao.beginTrans();
             dao.delete(company.get().getId());
+            dao.commitTrans();
             setResponse("Empresa removida com sucesso.");
         } catch (Exception ex) {
+            dao.rollback();
             setResponse(ex.getMessage());
         }
+    }
+
+    public void calculatePayRoll(String request) {
+        Integer id = Integer.parseInt(extractIdFromRequest(request));
+
+        Company company = dao.find(id);
+
+        if(company == null) {
+            setResponse(new String("Empresa não encontrada."));
+            return;
+        }
+
+        double payRoll = company.calculatePayRoll();
+        setResponse(payRoll);
     }
 }

@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>240</x>
+      <y>54</y>
+      <w>204</w>
+      <h>138</h>
+    </coordinates>
+    <panel_attributes>Person
+--
+- cpf: String
+- name: String
+- address: String
+--
++Person()
++Person(cpf: String, name: String, address: String) 
++getCpf(): String
++setCpf(cpf: String): void
++getName(): String
++setName(name: String): void
++getAddress(): String
++setAddress(address: String): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>504</x>
+      <y>54</y>
+      <w>204</w>
+      <h>162</h>
+    </coordinates>
+    <panel_attributes>Company
+--
+- cnpj: String
+- socialReason: String
+- foundedIn: int
+--
++Company(id: Int,cnpj: String, socialReason: String, 
+                   foundedIn: int) 
++removePerson(person: Person): Boolean
++addPerson(person: Person): Boolean
++toString(): String
++getId(): int
++setId(): int
++getCnpj(): String
++setCnpj(): String
++getSocialReason(): String
++setSocialReason(): String
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>48</x>
+      <y>228</y>
+      <w>282</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>Customer
+--
+- deliveryAddress: String
+- balanceDue: double
+- contact: String 	
+--
++Customer()
++Customer(deliveryAddress: String, balanceDue: double, contact: String, 
+       		           cpf: String, name: String, address: String) 
++getDeliveryAddress(): String
++setDeliveryAddress(): void
++getBalanceDue(): double
++setBalanceDue(balanceDue: double): void
++getContact(): String
++setContact(contact: String): void
++toString(): String</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>360</x>
+      <y>228</y>
+      <w>228</w>
+      <h>156</h>
+    </coordinates>
+    <panel_attributes>Employee
+--
+- position: String
+- salary: double
+- active: boolean
+--
++Employee()
++Employee(position: String, salary: double, active: double,
+                   cpf: String, name: String, address: String) 
++getPosition(): String
++setPosition(position: String): void
++getSalary(): double
++setSalary(salary: double): void
++getActive(): boolean
++setActive(active: boolean): void
++toString(): String
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>396</x>
+      <y>186</y>
+      <w>18</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>270</x>
+      <y>186</y>
+      <w>18</w>
+      <h>54</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;70.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>438</x>
+      <y>132</y>
+      <w>78</w>
+      <h>30</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;&lt;&lt;-
+m1=1
+m2= *
+&lt; Possui</panel_attributes>
+    <additional_attributes>110.0;20.0;10.0;20.0</additional_attributes>
+  </element>
+</diagram>

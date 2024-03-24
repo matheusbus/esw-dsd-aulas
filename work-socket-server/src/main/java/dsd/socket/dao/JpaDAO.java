@@ -63,9 +63,7 @@ public abstract class JpaDAO<T, ID> implements DAO<T, ID> {
 
     @Override
     public T update(T entity) {
-        beginTrans();
         em.merge(entity);
-        commitTrans();
         return entity;
     }
 

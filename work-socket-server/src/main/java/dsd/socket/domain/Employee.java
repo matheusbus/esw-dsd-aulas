@@ -58,15 +58,29 @@ public class Employee extends Person implements Serializable {
 
     @Override
     public String toString() {
+        StringBuilder companyString = new StringBuilder();
+
+        if(company == null) {
+            companyString.append("[]");
+        } else {
+            companyString = new StringBuilder()
+                    .append("[")
+                    .append(company.getId()).append(";")
+                    .append(company.getCnpj()).append(";")
+                    .append(company.getSocialReason()).append(";")
+                    .append(company.getFoundedIn())
+                    .append("]");
+        }
+
         return new StringBuilder()
             .append(this.getClass().getSimpleName() + ";")
             .append(this.getCpf() + ";")
             .append(this.getName() + ";")
             .append(this.getAddress() + ";")
-            .append(this.getCompany().toString() + ";")
+            .append(companyString + ";")
             .append(this.getPosition() + ";")
             .append(this.getSalary() + ";")
-            .append(this.getActive().toString() + ";")
+            .append(this.getActive().toString())
             .toString();
     }
     

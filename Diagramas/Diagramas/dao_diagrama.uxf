@@ -1,0 +1,250 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>6</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>132</x>
+      <y>42</y>
+      <w>240</w>
+      <h>78</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+DAOFactory
+--
++createCompanyDAO(Company: int)
++createCustomerDAO(Customer: String)
++createEmployeeDAO(Employee: String)
++createPersonDAO(Person: String)
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>0</x>
+      <y>192</y>
+      <w>204</w>
+      <h>66</h>
+    </coordinates>
+    <panel_attributes>JpaDAOFactory
+--
++ createCompanyDAO(): DAO&lt;Company, Integer&gt;
++ createCustomerDAO(): DAO&lt;Customer, String&gt;
++ createEmployeeDAO(): DAO&lt;Employee, String&gt;
++ createPersonDAO(): DAO&lt;Person, String&gt;
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>156</x>
+      <y>114</y>
+      <w>54</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>70.0;10.0;10.0;130.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>132</x>
+      <y>498</y>
+      <w>102</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>CompanyJpaDAOImpl
+--
++CompanyJpaDAOImpl()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>258</x>
+      <y>498</y>
+      <w>108</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>CustomerJpaDAOImpl
+--
++CustomerJpaDAOImpl()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>390</x>
+      <y>498</y>
+      <w>108</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>EmployeeJpaDAOImpl
+--
++EmployeeJpaDAOImpl()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>522</x>
+      <y>498</y>
+      <w>120</w>
+      <h>42</h>
+    </coordinates>
+    <panel_attributes>PersonJpaDAOImpl
+--
++PersonJpaDAOImpl()
+
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>270</x>
+      <y>246</y>
+      <w>240</w>
+      <h>174</h>
+    </coordinates>
+    <panel_attributes>/JpaDAO/
+--
+- emf: EntityManagerFactory
+- em: EntityManager
+- clazz: Class&lt;T&gt;       
+--
++ {static} emf: EntityManagerFactory
++ JpaDAO()
++ JpaDAO(clazz: Class&lt;T&gt;)
++ insert(entity: T): T
++ findAll(): List&lt;T&gt;
++ findAllOffSet(quantity: int, offset: int): List&lt;T&gt;
++ find(id: ID): T
++ update(entity: T): T
++ delete(id: ID): void
++ beginTrans(): DAO&lt;T, ID&gt;
++ commitTrans(): DAO&lt;T, ID&gt;
++ close(): void
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>492</x>
+      <y>78</y>
+      <w>138</w>
+      <h>84</h>
+    </coordinates>
+    <panel_attributes>&lt;&lt;interface&gt;&gt;
+DAO	
+--
++ insert(entity: T): T
++ findAll(): List&lt;T&gt;
++ update(entity: T): T
++ delete(id: ID): void
++ find(id: ID): T
+
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>438</x>
+      <y>156</y>
+      <w>96</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>140.0;10.0;10.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>636</x>
+      <y>246</y>
+      <w>120</w>
+      <h>90</h>
+    </coordinates>
+    <panel_attributes>InMemoryDAO
+--
+- data: Map&lt;ID, T&gt;
+--
++ InMemoryDAO()
++ List&lt;T&gt; findAll()
++ void delete(id: ID)
++ T find(id: ID)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>600</x>
+      <y>156</y>
+      <w>72</w>
+      <h>102</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;.</panel_attributes>
+    <additional_attributes>10.0;10.0;100.0;150.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>210</x>
+      <y>414</y>
+      <w>78</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>110.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>336</x>
+      <y>414</y>
+      <w>18</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>420</x>
+      <y>414</y>
+      <w>18</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;10.0;140.0</additional_attributes>
+  </element>
+  <element>
+    <id>Relation</id>
+    <coordinates>
+      <x>492</x>
+      <y>414</y>
+      <w>48</w>
+      <h>96</h>
+    </coordinates>
+    <panel_attributes>lt=&lt;&lt;-</panel_attributes>
+    <additional_attributes>10.0;10.0;60.0;140.0</additional_attributes>
+  </element>
+</diagram>

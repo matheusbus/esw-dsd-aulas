@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>8</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>152</x>
+      <y>0</y>
+      <w>304</w>
+      <h>208</h>
+    </coordinates>
+    <panel_attributes>RequestHandler
+--
+- instance: RequestHandler
+- daoFactory: DAOFactory
+- companyService: RequestHandlerService
+- customerService: RequestHandlerService
+- employeeService: RequestHandlerService
+- response: Object 
+--
++ getInstance(): RequestHandler
++ handleRequest(request: String): Object
++ clearResponse(): void
++ setResponse(response: Object): void
++ getAndClearResponse(): Object 
+- extractSubjectFromRequest(request: String): Subject                
+- extractStringMethodFromRequest(request: String): String </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>152</x>
+      <y>240</y>
+      <w>304</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>RequestHandlerException
+--
++ RequestHandlerException(message: String) </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>152</x>
+      <y>328</y>
+      <w>304</w>
+      <h>128</h>
+    </coordinates>
+    <panel_attributes>RequestHandlerService
+--
+- handleRequest(methodStr: String, request: String)
+--
+# get(request: String): void
+# list(request: String): void
+# insert(request: String): void
+# update(request: String): void
+# delete(request: String): void
+# getResponse(): Object  </panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>152</x>
+      <y>496</y>
+      <w>304</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Response
+--</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

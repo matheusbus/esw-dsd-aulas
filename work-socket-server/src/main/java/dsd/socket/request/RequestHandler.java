@@ -33,8 +33,8 @@ public class RequestHandler {
     
     private RequestHandler() {
         this.companyService = new CompanyService(daoFactory.createCompanyDAO());
-        this.customerService = new CustomerService(daoFactory.createCustomerDAO());
-        this.employeeService = new EmployeeService(daoFactory.createEmployeeDAO());
+        this.customerService = new CustomerService(daoFactory.createCustomerDAO(), daoFactory.createCompanyDAO());
+        this.employeeService = new EmployeeService(daoFactory.createEmployeeDAO(), daoFactory.createCompanyDAO());
         this.response = null;
     }
     

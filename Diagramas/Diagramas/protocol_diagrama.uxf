@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<diagram program="umlet" version="15.0.0">
+  <zoom_level>7</zoom_level>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>252</x>
+      <y>91</y>
+      <w>238</w>
+      <h>112</h>
+    </coordinates>
+    <panel_attributes>Method
+--
++ GET: Method      
++ LIST: Method       
++ INSERT: Method     
++ UPDATE: Method     
++ DELETE: Method
+--
++ fromString(value: String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>252</x>
+      <y>238</y>
+      <w>238</w>
+      <h>56</h>
+    </coordinates>
+    <panel_attributes>Status
+--
++ SUCCESS: Status
++ ERROR: Status
+</panel_attributes>
+    <additional_attributes/>
+  </element>
+  <element>
+    <id>UMLClass</id>
+    <coordinates>
+      <x>252</x>
+      <y>329</y>
+      <w>238</w>
+      <h>98</h>
+    </coordinates>
+    <panel_attributes>Subject
+--
++ PERSON: Method      
++ COMPANY: Method       
++ CUSTOMER: Method     
++ EMPLOYEE: Method     
+--
++ fromString(value: String)</panel_attributes>
+    <additional_attributes/>
+  </element>
+</diagram>

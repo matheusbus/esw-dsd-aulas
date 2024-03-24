@@ -1,9 +1,9 @@
 package dsd.socket.service;
 
 import dsd.socket.dao.DAO;
-import dsd.socket.domain.Customer;
+import dsd.socket.domain.Company;
 import dsd.socket.domain.Employee;
-import dsd.socket.protocol.Method;
+import dsd.socket.protocol.EmployeeMethod;
 import dsd.socket.request.RequestHandlerService;
 
 import java.util.List;
@@ -13,10 +13,35 @@ public class EmployeeService extends RequestHandlerService {
     
     private final DAO<Employee, String> dao;
 
-    public EmployeeService(DAO<Employee, String> dao) {
+    private final CompanyService companyService;
+
+    public EmployeeService(DAO<Employee, String> dao, DAO<Company, Integer> companyDao) {
         this.dao = dao;
+        this.companyService = new CompanyService(companyDao);
     }
 
+    @Override
+    protected void handleRequest(String methodStr, String request) {
+        EmployeeMethod method = EmployeeMethod.fromString(methodStr);
+
+        switch (method) {
+            case GET:
+                get(request);
+                break;
+            case LIST:
+                list(request);
+                break;
+            case INSERT:
+                insert(request);
+                break;
+            case UPDATE:
+                update(request);
+                break;
+            case DELETE:
+                delete(request);
+                break;
+        }
+    }
 
     @Override
     protected void get(String request) {
@@ -51,7 +76,7 @@ public class EmployeeService extends RequestHandlerService {
 
         StringBuilder builder = new StringBuilder();
         builder.append(employees.size());
-        employees.forEach(employee -> builder.append(employee.toString()));
+        employees.forEach(employee -> builder.append(employee.toString() + ","));
 
         setResponse(builder.toString());
     }
