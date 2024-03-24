@@ -42,7 +42,6 @@ public final class CompanyConsultView extends BaseConsultView {
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
         btnRegister = new javax.swing.JButton();
-        btnSelect = new javax.swing.JButton();
         btnUpdate = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         btnRemove = new javax.swing.JButton();
@@ -98,9 +97,6 @@ public final class CompanyConsultView extends BaseConsultView {
         btnRegister.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRegister.setText("Register");
 
-        btnSelect.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnSelect.setText("Select");
-
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnUpdate.setText("Update");
 
@@ -132,9 +128,7 @@ public final class CompanyConsultView extends BaseConsultView {
                                 .addComponent(btnSearch)
                                 .addGap(36, 36, 36)
                                 .addComponent(btnRegister)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(btnSelect)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGap(96, 96, 96)
                                 .addComponent(btnUpdate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnRemove)))))
@@ -152,7 +146,6 @@ public final class CompanyConsultView extends BaseConsultView {
                     .addComponent(btnSearch)
                     .addComponent(btnRegister)
                     .addComponent(btnUpdate)
-                    .addComponent(btnSelect)
                     .addComponent(btnRemove))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -185,10 +178,6 @@ public final class CompanyConsultView extends BaseConsultView {
         btnRemove.addActionListener(action);
     }
     
-    public void addActionBtnSelect(ActionListener action) {
-        btnSelect.addActionListener(action);
-    }
-    
     public void addActionBtnSearch(ActionListener action) {
         btnSearch.addActionListener(action);
     }
@@ -201,10 +190,6 @@ public final class CompanyConsultView extends BaseConsultView {
     @Override
     public void clearTable() {
         grid.setRowCount(0);
-    }
-
-    public void setBtnSelect(Boolean bool) {
-        this.btnSelect.setEnabled(bool);
     }
     
     public void fillTable(Map<Integer, Company> companies) {
@@ -240,7 +225,6 @@ public final class CompanyConsultView extends BaseConsultView {
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnSelect;
     private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblId;

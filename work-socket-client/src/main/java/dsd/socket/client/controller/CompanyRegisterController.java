@@ -16,7 +16,7 @@ public final class CompanyRegisterController implements BaseRegisterController {
 
     private CompanyRegisterView view;
     private Company company;
-    private CompanyRegisterController companyRegisterController;
+    private CompanyConsultController companyConsultController;
 
     public CompanyRegisterController() {
         this.view = new CompanyRegisterView();
@@ -25,10 +25,10 @@ public final class CompanyRegisterController implements BaseRegisterController {
         initializeRegister();
     }
 
-    public CompanyRegisterController(CompanyRegisterView view, Company company, CompanyRegisterController companyRegisterController) {
+    public CompanyRegisterController(CompanyRegisterView view, Company company, CompanyConsultController companyConsultController) {
         this.view = view;
         this.company = company;
-        this.companyRegisterController = companyRegisterController;
+        this.companyConsultController = companyConsultController;
         initButtons();
         initializeRegister();
         populateFields();

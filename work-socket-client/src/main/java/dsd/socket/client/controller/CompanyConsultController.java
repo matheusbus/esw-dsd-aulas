@@ -8,6 +8,7 @@ import dsd.socket.client.controller.base.BaseCosultController;
 import dsd.socket.client.infra.service.CompanyService;
 import dsd.socket.client.model.Company;
 import dsd.socket.client.view.consult.CompanyConsultView;
+import dsd.socket.client.view.register.CompanyRegisterView;
 
 /**
  *
@@ -24,7 +25,6 @@ public final class CompanyConsultController implements BaseCosultController {
         this.companySelected = null;
         this.companyService = new CompanyService();
         initButtons();
-        setBtnSelect(false);
     }
 
     @Override
@@ -34,9 +34,6 @@ public final class CompanyConsultController implements BaseCosultController {
         }));
         view.addActionBtnSearch(((e) -> {
             actionSeacth();
-        }));
-        view.addActionBtnSelect(((e) -> {
-            actionSelect();
         }));
         view.addActionBtnUpdate(((e) -> {
             actionUpdate();
@@ -81,30 +78,18 @@ public final class CompanyConsultController implements BaseCosultController {
         try {
             String id = view.getIdTableRecord();
             
-            
-            
-            //Company company = (Company) repository.getById(id);
-            //CadastroCarroController cadastroCarroController = new CadastroCarroController(new CadastroCarroView(), carro, this);
-            //cadastroCarroController.exibirTela();
+            Company company = (Company) companyService.find(Integer.valueOf(id));
+            CompanyRegisterController companyRegisterController = new CompanyRegisterController(new CompanyRegisterView(), company, this);
+            companyRegisterController.showFrame();
         } catch (Exception e) {
             showMessage("No records were selected.", "Error");
         }
     }
 
-    public void actionSelect() {
-        String id = view.getIdTableRecord();
-        //cadastroVendaController.setVeiculo(veiculoRepositorio.buscarVeiculo(sPlaca));
-        //cadastroVendaController.populaListaVeiculo();
-        closeFrame();
-    }
-
     public void actionRemove() {
         try {
             if (0 == view.question("Are you sure you want to delete the selected record?", "Deletion confirmation")) {
-                
-                // enviar requisicao para delete
-                
-                //pessoasRepositorio.removerPessoa(ConsultaFuncionariosView.getCPFTabelaRegistro());
+                companyService.delete(Integer.valueOf(view.getIdTableRecord()));
                 fillTable();
                 showMessage("Registration successfully removed", "Success");
             }
@@ -115,10 +100,6 @@ public final class CompanyConsultController implements BaseCosultController {
 
     public void clearTable() {
         view.clearTable();
-    }
-
-    public void setBtnSelect(Boolean bool) {
-        view.setBtnSelect(bool);
     }
 
     @Override
