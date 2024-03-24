@@ -47,7 +47,7 @@ public class WorkSocketServer {
 
             while (true) {
                 Socket clientSocket = serverSocket.accept();
-                System.out.println("Connection established with client <"+clientSocket.getLocalPort()+">");
+                System.out.println("Connection established with client <"+clientSocket.getInetAddress()+":"+clientSocket.getLocalPort()+">");
 
                 BufferedReader in = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
 
@@ -73,27 +73,6 @@ public class WorkSocketServer {
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public static void main(String[] args) {
-        /*
-        // 1- RequestHandler.openServices(); --> vai criar todos os serviços
-        
-        // 2- Cria o socket
-        
-        // 3- Aguardar por conexão
-        
-        while(true) {
-            // Esperar conexão
-            // Esperar mensagem
-            // Recebe mensagem e chama --> RequestHandler.handleRequest(String request);
-            // Recebe devolutiva --> if RequestHandler.responseAvailable() then getResponse(); e envia ao client
-            // Finaliza conexão;
-        }
-        
-        // 4- Fechar tudo;
-        
-        */
     }
     
 }

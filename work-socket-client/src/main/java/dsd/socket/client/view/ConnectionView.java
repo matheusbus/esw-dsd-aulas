@@ -4,17 +4,52 @@
  */
 package dsd.socket.client.view;
 
+import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialOceanicIJTheme;
+import dsd.socket.client.view.base.BaseView;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Matheus
  */
-public class ConnectionView extends javax.swing.JFrame {
+public class ConnectionView extends BaseView {
 
     /**
      * Creates new form ConnectionView
      */
     public ConnectionView() {
+        initLayout();
+    }
+
+    @Override
+    public void initLayout() {
         initComponents();
+        this.setLocationRelativeTo(null);
+        this.setResizable(false);
+        this.setSize(400, 230);
+    }
+
+    public void addActionBtnConnect(ActionListener action) {
+        btnConnect.addActionListener(action);
+    }
+
+    public String getAddress() {
+        return this.txtAddress.getText();
+    }
+
+    public Integer getPort() {
+        return Integer.valueOf(this.txtPort.getText());
+    }
+
+    public boolean verifyFields() {
+        String address = this.txtAddress.getText();
+        String port = this.txtPort.getText();
+
+        if(address.isBlank() || port.isBlank()) {
+            return false;
+        }
+
+        return true;
     }
 
     /**
@@ -26,17 +61,76 @@ public class ConnectionView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        lblAddress = new javax.swing.JLabel();
+        txtAddress = new javax.swing.JTextField();
+        lblPort = new javax.swing.JLabel();
+        txtPort = new javax.swing.JTextField();
+        btnConnect = new javax.swing.JButton();
+        lblTitle = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Conexão [Gestão Empresarial]");
+        setPreferredSize(new java.awt.Dimension(200, 400));
+
+        lblAddress.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblAddress.setText("Address");
+
+        txtAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtAddress.setText("192.168.2.102");
+
+        lblPort.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPort.setText("Port");
+
+        txtPort.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPort.setText("12345");
+
+        btnConnect.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnConnect.setText("Connect");
+
+        lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        lblTitle.setText("Connection");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(29, 29, 29)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblTitle)
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnConnect, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(lblAddress)
+                                        .addGap(0, 0, Short.MAX_VALUE))
+                                    .addComponent(txtAddress, javax.swing.GroupLayout.DEFAULT_SIZE, 209, Short.MAX_VALUE))
+                                .addGap(18, 18, 18)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblPort, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(txtPort, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGap(31, 31, 31))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(14, Short.MAX_VALUE)
+                .addComponent(lblTitle)
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lblAddress)
+                    .addComponent(lblPort))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtPort, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(btnConnect)
+                .addGap(28, 28, 28))
         );
 
         pack();
@@ -46,30 +140,8 @@ public class ConnectionView extends javax.swing.JFrame {
      * @param args the command line arguments
      */
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ConnectionView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ConnectionView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ConnectionView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ConnectionView.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
+        FlatMaterialOceanicIJTheme.setup();
 
-        /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new ConnectionView().setVisible(true);
@@ -78,5 +150,12 @@ public class ConnectionView extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnConnect;
+    private javax.swing.JLabel lblAddress;
+    private javax.swing.JLabel lblPort;
+    private javax.swing.JLabel lblTitle;
+    private javax.swing.JTextField txtAddress;
+    private javax.swing.JTextField txtPort;
     // End of variables declaration//GEN-END:variables
+
 }

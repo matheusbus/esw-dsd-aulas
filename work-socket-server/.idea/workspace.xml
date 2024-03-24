@@ -5,22 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="862f1dfe-b127-4871-a301-0b23047c3ea4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/protocol/CompanyMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/protocol/CustomerMethod.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/protocol/EmployeeMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/ConnectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/ConnectionController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/model/Companny.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/model/Company.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/model/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/model/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/ConnectionView.form" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/ConnectionView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/ConnectionView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/ConnectionView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/dao/JpaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/dao/JpaDAO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Customer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Employee.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/protocol/Method.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/request/RequestHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/request/RequestHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/request/RequestHandlerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/request/RequestHandlerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/service/CompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/service/CompanyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/service/CustomerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/service/EmployeeService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/data.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/data.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/protocol/Status.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/server/WorkSocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/server/WorkSocketServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -120,16 +113,6 @@
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dsd/socket/server/WorkSocketServer.java</url>
-          <line>49</line>
-          <option name="timeStamp" value="16" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/dsd/socket/server/WorkSocketServer.java</url>
-          <line>54</line>
-          <option name="timeStamp" value="17" />
-        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dsd/socket/domain/Company.java</url>
           <line>115</line>
