@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="ArtifactsWorkspaceSettings">
+    <artifacts-to-build>
+      <artifact name="work-socket-server:jar" />
+    </artifacts-to-build>
+  </component>
   <component name="AutoImportSettings">
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="862f1dfe-b127-4871-a301-0b23047c3ea4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../testes-server" beforeDir="false" afterPath="$PROJECT_DIR$/../testes-server" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/App.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/App.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/infra/service/CompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/infra/service/CompanyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/infra/socket/WorkSocketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/infra/socket/WorkSocketClient.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/META-INF/MANIFEST.MF" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/MainView.form" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/MainView.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/MainView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
@@ -46,8 +48,11 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/GitHub/esw-dsd-aulas/work-socket-server",
+    "last_opened_file_path": "/home/matheus/Documentos/GitHub/esw-dsd-aulas/work-socket-client",
     "onboarding.tips.debug.path": "C:/GitHub/esw-dsd-aulas/work-socket-server/src/main/java/org/example/Main.java",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler"
   }
 }]]></component>

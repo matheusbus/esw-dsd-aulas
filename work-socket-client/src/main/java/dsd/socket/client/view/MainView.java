@@ -100,7 +100,7 @@ public class MainView extends BaseView implements RequestObserver {
         txtLog.setEditable(false);
         txtLog.setColumns(20);
         txtLog.setFont(new java.awt.Font("Liberation Mono", 0, 14)); // NOI18N
-        txtLog.setForeground(new java.awt.Color(0, 102, 102));
+        txtLog.setForeground(new java.awt.Color(0, 153, 153));
         txtLog.setLineWrap(true);
         txtLog.setRows(5);
         jScrollPane1.setViewportView(txtLog);
