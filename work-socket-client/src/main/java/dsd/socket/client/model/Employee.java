@@ -17,11 +17,12 @@ public class Employee extends Person {
     public Employee() {
     }
     
-    public Employee(String cpf, String name, String address, String position, Double salary, Boolean active) {
+    public Employee(String cpf, String name, String address, String position, Double salary, Boolean active, Company company) {
         super(cpf, name, address);
         this.position = position;
         this.salary = salary;
         this.active = active;
+        this.company = company;
     }
 
     public String getPosition() {
@@ -46,6 +47,11 @@ public class Employee extends Person {
 
     public void setActive(Boolean active) {
         this.active = active;
+    }
+    
+    @Override
+    public Object[] getData() {
+        return new Object[]{this.cpf, this.name, this.address, this.position, this.salary, this.active, this.company.getCnpj()+ " - " + this.company.getSocialReason()};
     }
 
     @Override

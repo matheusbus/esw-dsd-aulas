@@ -80,7 +80,7 @@ public abstract class JpaDAO<T, ID> implements DAO<T, ID> {
             }
         } catch (Exception ex) {
             rollback(); // Fazer rollback em caso de exceção
-            throw new RuntimeException("Erro ao excluir a entidade", ex); // Lidar com exceção
+            throw new RuntimeException("Erro ao excluir a entidade: " + ex.getMessage()); // Lidar com exceção
         }
     }
 

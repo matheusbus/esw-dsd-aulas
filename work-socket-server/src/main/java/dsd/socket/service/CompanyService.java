@@ -39,6 +39,8 @@ public class CompanyService extends RequestHandlerService {
             case PAYROLL:
                 calculatePayRoll(request);
                 break;
+            case RECEIVABLE:
+                calculateReceivable(request);
         }
     }
 
@@ -158,12 +160,9 @@ public class CompanyService extends RequestHandlerService {
         }
 
         try {
-            dao.beginTrans();
             dao.delete(company.get().getId());
-            dao.commitTrans();
             setResponse("Empresa removida com sucesso.");
         } catch (Exception ex) {
-            dao.rollback();
             setResponse(ex.getMessage());
         }
     }
@@ -179,6 +178,20 @@ public class CompanyService extends RequestHandlerService {
         }
 
         double payRoll = company.calculatePayRoll();
+        setResponse(payRoll);
+    }
+
+    public void calculateReceivable(String request) {
+        Integer id = Integer.parseInt(extractIdFromRequest(request));
+
+        Company company = dao.find(id);
+
+        if(company == null) {
+            setResponse(new String("Empresa não encontrada."));
+            return;
+        }
+
+        double payRoll = company.calculateAccountsReceivable();
         setResponse(payRoll);
     }
 }

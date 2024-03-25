@@ -8,9 +8,13 @@ import dsd.socket.client.controller.register.CompanyRegisterController;
 import dsd.socket.client.controller.consult.CompanyPayrollController;
 import dsd.socket.client.controller.consult.CompanyConsultController;
 import dsd.socket.client.controller.base.BaseController;
+import dsd.socket.client.controller.consult.CompanyReceivableController;
 import dsd.socket.client.controller.consult.CustomerConsultController;
+import dsd.socket.client.controller.consult.EmployeeConsultController;
 import dsd.socket.client.controller.register.CustomerRegisterController;
+import dsd.socket.client.controller.register.EmployeeRegisterController;
 import dsd.socket.client.view.MainView;
+import dsd.socket.client.view.consult.CompanyReceivableView;
 
 /**
  *
@@ -75,7 +79,8 @@ public final class MainController implements BaseController {
     }
     
     public void actionBtnCompanyReceivable() {
-        
+        CompanyReceivableController companyReceivableController = new CompanyReceivableController();
+        companyReceivableController.showFrame();
     }
     
     public void actionBtnCustomerConsult() {
@@ -89,15 +94,18 @@ public final class MainController implements BaseController {
     }
     
     public void actionBtnCustomerPayment() {
-        
+        CustomerPaymentController customerPaymentController = new CustomerPaymentController();
+        customerPaymentController.showFrame();
     }
     
     public void actionBtnEmployeeConsult() {
-        
+        EmployeeConsultController employeeConsultController = new EmployeeConsultController();
+        employeeConsultController.showFrame();
     }
     
     public void actionBtnEmployeeRegister() {
-       
+        EmployeeRegisterController employeeRegisterController = new EmployeeRegisterController();
+        employeeRegisterController.showFrame();
     }
 
     @Override

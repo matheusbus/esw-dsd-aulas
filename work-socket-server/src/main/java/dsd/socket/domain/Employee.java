@@ -25,11 +25,12 @@ public class Employee extends Person implements Serializable {
     public Employee() {
     }
 
-    public Employee(String cpf, String name, String address, String position, Double salary, Boolean active) {
+    public Employee(String cpf, String name, String address, String position, Double salary, Boolean active, Company company) {
         super(cpf, name, address);
         this.position = position;
         this.salary = salary;
         this.active = active;
+        this.company = company;
     }
 
     public String getPosition() {
@@ -65,9 +66,9 @@ public class Employee extends Person implements Serializable {
         } else {
             companyString = new StringBuilder()
                     .append("[")
-                    .append(company.getId()).append(";")
-                    .append(company.getCnpj()).append(";")
-                    .append(company.getSocialReason()).append(";")
+                    .append(company.getId()).append("##")
+                    .append(company.getCnpj()).append("##")
+                    .append(company.getSocialReason()).append("##")
                     .append(company.getFoundedIn())
                     .append("]");
         }

@@ -4,7 +4,6 @@
  */
 package dsd.socket.client.view.register;
 
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialOceanicIJTheme;
 import dsd.socket.client.view.base.BaseRegisterView;
 import java.awt.event.ActionListener;
 
@@ -12,9 +11,9 @@ import java.awt.event.ActionListener;
  *
  * @author Matheus
  */
-public final class CustomerRegisterView extends BaseRegisterView {
+public final class EmployeeRegisterView extends BaseRegisterView {
 
-    public CustomerRegisterView() {
+    public EmployeeRegisterView() {
         initLayout();
     }
 
@@ -79,28 +78,32 @@ public final class CustomerRegisterView extends BaseRegisterView {
         this.txtAddress.setText(address);
     }
     
-    public String getDeliveryAddress() {
-        return this.txtDeliveryAddress.getText();
+    public String getPosition() {
+        return this.txtPosition.getText();
     }
     
-    public void setDeliveryAddress(String deliveryAddress) {
-        this.txtDeliveryAddress.setText(deliveryAddress);
+    public void setPosition(String position) {
+        this.txtPosition.setText(position);
     }
     
-    public String getBalanceDue() {
-        return this.txtBalanceDue.getText();
+    public String getSalary() {
+        return this.txtSalary.getText();
     }
     
-    public void setBalanceDue(String balanceDue) {
-        this.txtBalanceDue.setText(balanceDue);
+    public void setSalary(String balanceDue) {
+        this.txtSalary.setText(balanceDue);
     }
     
-    public String getContact() {
-        return this.txtContact.getText();
+    public Boolean getActive() {
+        return this.cbActive.getSelectedIndex() == 0;
     }
     
-    public void setContact(String contact) {
-        this.txtContact.setText(contact);
+    public void setActive(Boolean active) {
+        if(active) {
+            this.cbActive.setSelectedIndex(0);
+        } else {
+            this.cbActive.setSelectedIndex(1);
+        }
     }
     
     public String getId() {
@@ -157,18 +160,18 @@ public final class CustomerRegisterView extends BaseRegisterView {
         lblName = new javax.swing.JLabel();
         txtAddress = new javax.swing.JTextField();
         lblAddress = new javax.swing.JLabel();
-        txtDeliveryAddress = new javax.swing.JTextField();
-        lblDeliveryAddress = new javax.swing.JLabel();
-        txtBalanceDue = new javax.swing.JTextField();
-        lblBalanceDue = new javax.swing.JLabel();
-        txtContact = new javax.swing.JTextField();
-        lblContact = new javax.swing.JLabel();
+        txtPosition = new javax.swing.JTextField();
+        lblPosition = new javax.swing.JLabel();
+        txtSalary = new javax.swing.JTextField();
+        lblSalary = new javax.swing.JLabel();
+        lblActive = new javax.swing.JLabel();
+        cbActive = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Customer [Register]");
+        setTitle("Employee [Register]");
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTitle.setText("Register Customer");
+        lblTitle.setText("Register Employee");
 
         lblId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblId.setText("ID");
@@ -217,20 +220,20 @@ public final class CustomerRegisterView extends BaseRegisterView {
         lblAddress.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         lblAddress.setText("Address");
 
-        txtDeliveryAddress.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtPosition.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        lblDeliveryAddress.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblDeliveryAddress.setText("Delivery Address");
+        lblPosition.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblPosition.setText("Position");
 
-        txtBalanceDue.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        txtSalary.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
-        lblBalanceDue.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblBalanceDue.setText("Balance Due");
+        lblSalary.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblSalary.setText("Salary");
 
-        txtContact.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        lblActive.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblActive.setText("Active");
 
-        lblContact.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblContact.setText("Contact");
+        cbActive.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "TRUE", "FALSE" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -279,19 +282,21 @@ public final class CustomerRegisterView extends BaseRegisterView {
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(txtAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(lblAddress)))
-                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(lblContact)
-                                        .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(cbActive, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                            .addComponent(lblActive)
+                                            .addGap(216, 216, 216)))))
                             .addComponent(txtCpf, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(21, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblDeliveryAddress)
-                            .addComponent(txtDeliveryAddress, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblPosition)
+                            .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, 313, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblBalanceDue)
-                            .addComponent(txtBalanceDue, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(lblSalary)
+                            .addComponent(txtSalary, javax.swing.GroupLayout.PREFERRED_SIZE, 156, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(322, 322, 322))))
         );
         layout.setVerticalGroup(
@@ -313,17 +318,17 @@ public final class CustomerRegisterView extends BaseRegisterView {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(lblDeliveryAddress)
+                        .addComponent(lblPosition)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(txtDeliveryAddress, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(txtPosition, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(lblBalanceDue)
-                            .addComponent(lblContact))
+                            .addComponent(lblSalary)
+                            .addComponent(lblActive))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtBalanceDue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtContact, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txtSalary)
+                            .addComponent(cbActive))))
                 .addGap(29, 29, 29)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblId)
@@ -353,26 +358,26 @@ public final class CustomerRegisterView extends BaseRegisterView {
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnUpdate;
+    private javax.swing.JComboBox<String> cbActive;
+    private javax.swing.JLabel lblActive;
     private javax.swing.JLabel lblAddress;
-    private javax.swing.JLabel lblBalanceDue;
     private javax.swing.JLabel lblCnpj;
-    private javax.swing.JLabel lblContact;
     private javax.swing.JLabel lblCpf;
-    private javax.swing.JLabel lblDeliveryAddress;
     private javax.swing.JLabel lblFoundedYear;
     private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblName;
+    private javax.swing.JLabel lblPosition;
+    private javax.swing.JLabel lblSalary;
     private javax.swing.JLabel lblSocialReason;
     private javax.swing.JLabel lblTitle;
     private javax.swing.JTextField txtAddress;
-    private javax.swing.JTextField txtBalanceDue;
     private javax.swing.JTextField txtCnpj;
-    private javax.swing.JTextField txtContact;
     private javax.swing.JTextField txtCpf;
-    private javax.swing.JTextField txtDeliveryAddress;
     private javax.swing.JTextField txtFoundedYear;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtName;
+    private javax.swing.JTextField txtPosition;
+    private javax.swing.JTextField txtSalary;
     private javax.swing.JTextField txtSocialReason;
     // End of variables declaration//GEN-END:variables
 }

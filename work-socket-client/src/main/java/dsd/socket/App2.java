@@ -1,7 +1,7 @@
 package dsd.socket;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialOceanicIJTheme;
-import dsd.socket.client.controller.ConnectionController;
+import dsd.socket.client.controller.register.ConnectionController;
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template

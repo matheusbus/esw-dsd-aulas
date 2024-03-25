@@ -4,24 +4,20 @@
  */
 package dsd.socket.client.view.consult;
 
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialOceanicIJTheme;
-import dsd.socket.client.model.Company;
 import dsd.socket.client.view.base.BaseConsultView;
 import java.awt.event.ActionListener;
 import java.util.List;
-import java.util.Map;
-import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Matheus
  */
-public final class CompanyPayrollView extends BaseConsultView {
+public final class CompanyReceivableView extends BaseConsultView {
 
     private DefaultTableModel grid;
 
-    public CompanyPayrollView() {
+    public CompanyReceivableView() {
         initLayout();
     }
 
@@ -94,7 +90,7 @@ public final class CompanyPayrollView extends BaseConsultView {
         btnSearch.setText("Search");
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTitle.setText("Companies Payroll");
+        lblTitle.setText("Companies Receivable");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -163,7 +159,6 @@ public final class CompanyPayrollView extends BaseConsultView {
             }
         }
         return null;
-        //return (String) grid.getValueAt(tblCompany.getSelectedRow(), 0);
     }
 
     public String getFilter() {

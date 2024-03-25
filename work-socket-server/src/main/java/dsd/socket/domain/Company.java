@@ -44,7 +44,7 @@ public class Company implements Serializable {
     @Column(name = "com_foundedin")
     private Integer foundedIn;
         
-    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
     private List<Person> people = new ArrayList<>();
 
     public Company() {
@@ -125,15 +125,15 @@ public class Company implements Serializable {
     }
 
     public Double calculateAccountsReceivable() {
-        AtomicReference<Double> payRoll = new AtomicReference<>(0.00);
+        AtomicReference<Double> receivable = new AtomicReference<>(0.00);
 
         people.forEach(p -> {
             if(p instanceof Customer) {
-                payRoll.updateAndGet(v -> v + ((Customer) p).getBalanceDue());
+                receivable.updateAndGet(v -> v + ((Customer) p).getBalanceDue());
             }
         });
 
-        return payRoll.get();
+        return receivable.get();
     }
 
     @Override

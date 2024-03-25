@@ -5,7 +5,6 @@
 package dsd.socket.client.infra.service;
 
 import dsd.socket.client.infra.request.CompanyRequest;
-import dsd.socket.client.infra.request.method.CompanyMethod;
 import dsd.socket.client.model.Company;
 import dsd.socket.client.model.Customer;
 import dsd.socket.client.model.Employee;
@@ -129,7 +128,7 @@ public class CompanyService implements Service<Company, Integer> {
     public void delete(Integer id) {
         CompanyRequest request = new CompanyRequest();
 
-        request.append(CompanyMethod.DELETE.toString())
+        request.append("DELETE")
                 .append(String.valueOf(id))
                 .send();
     }
@@ -138,7 +137,7 @@ public class CompanyService implements Service<Company, Integer> {
     public Company find(Integer id) {
         CompanyRequest request = new CompanyRequest();
 
-        request.append(CompanyMethod.GET.toString())
+        request.append("GET")
                 .append(String.valueOf(id))
                 .send();
 
@@ -197,7 +196,7 @@ public class CompanyService implements Service<Company, Integer> {
     public Double payroll(Integer id) {
         CompanyRequest request = new CompanyRequest();
 
-        request.append(CompanyMethod.PAYROLL.toString())
+        request.append("PAYROLL")
                 .append(String.valueOf(id))
                 .send();
         
@@ -205,6 +204,19 @@ public class CompanyService implements Service<Company, Integer> {
         Double payroll = Double.valueOf(response);
         
         return payroll;
+    }
+    
+    public Double receivable(Integer id) {
+        CompanyRequest request = new CompanyRequest();
+
+        request.append("RECEIVABLE")
+                .append(String.valueOf(id))
+                .send();
+        
+        String response = request.getResponse();
+        Double receivable = Double.valueOf(response);
+        
+        return receivable;
     }
 
 }

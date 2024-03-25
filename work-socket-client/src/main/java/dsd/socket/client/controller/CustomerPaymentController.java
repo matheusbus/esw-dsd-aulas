@@ -5,45 +5,44 @@
 package dsd.socket.client.controller;
 
 import dsd.socket.client.controller.base.BaseController;
-import dsd.socket.client.infra.socket.WorkSocketClient;
-import dsd.socket.client.view.ConnectionView;
+import dsd.socket.client.infra.service.CustomerService;
+import dsd.socket.client.view.register.CustomerPaymentView;
 
 /**
  *
  * @author Matheus
  */
-public final class ConnectionController implements BaseController {
+public final class CustomerPaymentController implements BaseController {
 
-    private WorkSocketClient connection;
-    private ConnectionView view;
+    private CustomerPaymentView view;
+    private CustomerService customerService =  new CustomerService();
 
-    public ConnectionController() {
-        this.view = new ConnectionView();
-        this.view.setVisible(true);
+    public CustomerPaymentController() {
+        this.view = new CustomerPaymentView();
         initButtons();
     }
 
     @Override
     public void initButtons() {
         view.addActionBtnConnect(((e) -> {
-            connect();
+            confirmPayment();
         }));
     }
 
-    public void connect() {
+    public void confirmPayment() {
         try {
             if (verifyFields()) {
-                String address = view.getAddress();
-                Integer port = view.getPort();
-                connection = WorkSocketClient.getInstance(address, port);
-                connection.testConnection();
-                showMessage("Connection successfully!", "Connected");
+                String cpf = view.getCpf();
+                Double amount = Double.valueOf(view.getAmount());
+                
+                String response = customerService.makePayment(cpf, amount);
+                
+                showMessage(response, "Warning");
             } else {
                 throw new Exception("Verify fields.");
             }
 
             closeFrame();
-            var mainController = new MainController();
         } catch (Exception ex) {
             showMessage(ex.getMessage(), "Error");
         }

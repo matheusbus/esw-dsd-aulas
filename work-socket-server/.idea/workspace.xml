@@ -5,29 +5,41 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="862f1dfe-b127-4871-a301-0b23047c3ea4" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/consult/CompanyPayrollController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/consult/CustomerConsultController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/register/CustomerRegisterController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CompanyPayrollView.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CompanyPayrollView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/register/CustomerRegisterView.form" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/register/CustomerRegisterView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/CompanyConsultController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/consult/CompanyConsultController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/CompanyRegisterController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/register/CompanyRegisterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/consult/CompanyReceivableController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/consult/EmployeeConsultController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/register/ConnectionController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/register/EmployeeRegisterController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CompanyReceivableView.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CompanyReceivableView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/EmployeeConsultView.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/EmployeeConsultView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/register/CustomerPaymentView.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/register/CustomerPaymentView.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/register/EmployeeRegisterView.form" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/register/EmployeeRegisterView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/App2.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/App2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/ConnectionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/CustomerPaymentController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/controller/MainController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/infra/request/CompanyRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/infra/request/CompanyRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/infra/request/method/CompanyMethod.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/infra/service/CompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/infra/service/CompanyService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CompanyConsultView.form" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CompanyConsultView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/infra/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/infra/service/CustomerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/model/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/model/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/model/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/model/Employee.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/ConnectionView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/ConnectionView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/MainView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/MainView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/base/BaseRegisterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/base/BaseRegisterView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CompanyConsultView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CompanyConsultView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CustomerConsultView.form" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CustomerConsultView.form" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CompanyPayrollView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CompanyPayrollView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CustomerConsultView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/consult/CustomerConsultView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/register/CompanyRegisterView.form" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/register/CompanyRegisterView.form" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/register/CompanyRegisterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/register/CompanyRegisterView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/register/CustomerRegisterView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../work-socket-client/src/main/java/dsd/socket/client/view/register/CustomerRegisterView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/dao/JpaDAO.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/dao/JpaDAO.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Company.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Company.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Customer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Customer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Employee.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Employee.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/domain/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/protocol/CompanyMethod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/protocol/CompanyMethod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/request/Response.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/service/CompanyService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/service/CompanyService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/service/CustomerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/service/CustomerService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/dsd/socket/service/EmployeeService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/dsd/socket/service/EmployeeService.java" afterDir="false" />
@@ -137,12 +149,12 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dsd/socket/service/CompanyService.java</url>
-          <line>181</line>
+          <line>180</line>
           <option name="timeStamp" value="19" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/dsd/socket/service/EmployeeService.java</url>
-          <line>131</line>
+          <line>150</line>
           <option name="timeStamp" value="20" />
         </line-breakpoint>
       </breakpoints>

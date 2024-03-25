@@ -12,12 +12,11 @@ import java.util.Optional;
 public class EmployeeService extends RequestHandlerService {
     
     private final DAO<Employee, String> dao;
-
-    private final CompanyService companyService;
+    private final DAO<Company, Integer> companyDao;
 
     public EmployeeService(DAO<Employee, String> dao, DAO<Company, Integer> companyDao) {
         this.dao = dao;
-        this.companyService = new CompanyService(companyDao);
+        this.companyDao = companyDao;
     }
 
     @Override
@@ -62,7 +61,7 @@ public class EmployeeService extends RequestHandlerService {
             return;
         }
 
-        setResponse(employee.toString());
+        setResponse(employee.get().toString());
     }
 
     @Override
@@ -75,8 +74,15 @@ public class EmployeeService extends RequestHandlerService {
         }
 
         StringBuilder builder = new StringBuilder();
-        builder.append(employees.size());
-        employees.forEach(employee -> builder.append(employee.toString() + ","));
+        builder.append(employees.size() + "::");
+
+        int lastIndex = employees.size() - 1;
+        for (int i = 0; i < employees.size(); i++) {
+            builder.append(employees.get(i).toString());
+            if (i != lastIndex) {
+                builder.append("::");
+            }
+        }
 
         setResponse(builder.toString());
     }
@@ -88,15 +94,26 @@ public class EmployeeService extends RequestHandlerService {
         String cpf = extractIdFromRequest(request);
         String name = requestData[3];
         String address = requestData[4];
-        String position = requestData[5];
-        Double salary = Double.valueOf(requestData[6]);
-        Boolean active = Boolean.valueOf(requestData[7]);
+        Integer companyId = Integer.parseInt(requestData[5]);
+        Company company = companyDao.find(companyId);
+        String position = requestData[6];
+        Double salary = Double.valueOf(requestData[7]);
+        Boolean active = Boolean.valueOf(requestData[8]);
 
-        Employee newEmployee = new Employee(cpf, name, address, position, salary, active);
+        if(company == null) {
+            setResponse(new String("Empresa não encontrada."));
+            return;
+        }
+
+
+        Employee newEmployee = new Employee(cpf, name, address, position, salary, active, company);
         try {
+            dao.beginTrans();
             dao.insert(newEmployee);
+            dao.commitTrans();
             setResponse(newEmployee);
         } catch (Exception ex) {
+            dao.rollback();
             setResponse(ex.getMessage());
         }
     }
@@ -120,7 +137,9 @@ public class EmployeeService extends RequestHandlerService {
         employee.setActive(Boolean.valueOf(requestData[7]));
 
         try {
+            dao.beginTrans();
             dao.update(employee);
+            dao.commitTrans();
             setResponse(employee);
         } catch (Exception ex) {
             setResponse(ex.getMessage());
@@ -147,9 +166,7 @@ public class EmployeeService extends RequestHandlerService {
         }
 
         try {
-            dao.beginTrans();
             dao.delete(employee.get().getCpf());
-            dao.commitTrans();
             setResponse("Funcionário removido com sucesso.");
         } catch (Exception ex) {
             setResponse(ex.getMessage());

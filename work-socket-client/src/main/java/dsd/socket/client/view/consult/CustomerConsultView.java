@@ -4,7 +4,6 @@
  */
 package dsd.socket.client.view.consult;
 
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialOceanicIJTheme;
 import dsd.socket.client.model.Customer;
 import dsd.socket.client.view.base.BaseConsultView;
 import java.awt.event.ActionListener;
@@ -164,17 +163,6 @@ public final class CustomerConsultView extends BaseConsultView {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    public static void main(String args[]) {
-        FlatMaterialOceanicIJTheme.setup();
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new CustomerConsultView().setVisible(true);
-            }
-        });
-    }
-
     public void addActionBtnRegister(ActionListener action) {
         btnRegister.addActionListener(action);
     }
@@ -229,7 +217,7 @@ public final class CustomerConsultView extends BaseConsultView {
     public boolean searchTable(String id) {
         int incidencia = -1;
         for (int i = 0; i < tblCustomer.getRowCount(); i++) {
-            if (grid.getValueAt(i, 0).equals(Integer.valueOf(id))) {
+            if (grid.getValueAt(i, 0).equals(id)) {
                 incidencia = i;
             }
         }

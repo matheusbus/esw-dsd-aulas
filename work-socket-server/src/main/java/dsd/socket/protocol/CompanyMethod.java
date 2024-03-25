@@ -7,7 +7,8 @@ public enum CompanyMethod {
     INSERT,
     UPDATE,
     DELETE,
-    PAYROLL;
+    PAYROLL,
+    RECEIVABLE;
 
     public static CompanyMethod fromString(String value) {
         for (CompanyMethod method : values()) {

@@ -20,7 +20,7 @@ public abstract class Person implements Serializable {
     @Column(name = "per_address", nullable = true)
     private String address;
     
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.EAGER)
     protected Company company;
 
     public Person() {

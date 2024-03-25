@@ -140,7 +140,9 @@ public class CustomerService extends RequestHandlerService {
         customer.setContact(requestData[7]);
 
         try {
+            dao.beginTrans();
             dao.update(customer);
+            dao.commitTrans();
             setResponse(customer);
         } catch (Exception ex) {
             setResponse(ex.getMessage());
