@@ -1,0 +1,10 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="work-socket-client:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/work_socket_client_jar</output-path>
+    <root id="archive" name="work-socket-client.jar">
+      <element id="module-output" name="work-socket-client" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/formdev/flatlaf-intellij-themes/3.4/flatlaf-intellij-themes-3.4.jar" path-in-jar="/" />
+      <element id="extracted-dir" path="$MAVEN_REPOSITORY$/com/formdev/flatlaf/3.4/flatlaf-3.4.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>

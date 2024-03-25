@@ -1,1 +1,3 @@
-Main-class: dsd.socket.App
+Manifest-Version: 1.0
+Main-Class: dsd.socket.App2
+
