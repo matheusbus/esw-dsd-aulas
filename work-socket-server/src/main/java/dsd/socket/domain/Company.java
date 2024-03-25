@@ -44,7 +44,7 @@ public class Company implements Serializable {
     @Column(name = "com_foundedin")
     private Integer foundedIn;
         
-    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "company", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<Person> people = new ArrayList<>();
 
     public Company() {

@@ -3,7 +3,7 @@
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <Properties>
     <Property name="defaultCloseOperation" type="int" value="2"/>
-    <Property name="title" type="java.lang.String" value="Customer [Consult]"/>
+    <Property name="title" type="java.lang.String" value="Company [Consult]"/>
   </Properties>
   <SyntheticProperties>
     <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
@@ -27,30 +27,20 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="jScrollPane1" alignment="0" pref="1088" max="32767" attributes="0"/>
+                  <Component id="jScrollPane1" alignment="0" pref="595" max="32767" attributes="0"/>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lblTitle" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Component id="lblCpf" min="-2" max="-2" attributes="0"/>
+                              <Component id="lblId" min="-2" max="-2" attributes="0"/>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="txtSearch" min="-2" pref="173" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
-                              <Component id="btnRegister" min="-2" max="-2" attributes="0"/>
+                              <Component id="txtSearch" min="-2" pref="70" max="-2" attributes="0"/>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
-                              <Component id="btnRefresh" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace min="-2" pref="55" max="-2" attributes="0"/>
-                              <Component id="btnUpdate" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="32767" attributes="0"/>
-                              <Component id="btnRemove" min="-2" max="-2" attributes="0"/>
+                              <Component id="btnSearch" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -64,13 +54,9 @@
               <Component id="lblTitle" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="56" max="32767" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="lblCpf" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lblId" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="txtSearch" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="btnSearch" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnRegister" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnUpdate" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnRemove" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="btnRefresh" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" pref="355" max="-2" attributes="0"/>
@@ -87,17 +73,14 @@
 
       <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
       <SubComponents>
-        <Component class="javax.swing.JTable" name="tblCustomer">
+        <Component class="javax.swing.JTable" name="tblCompany">
           <Properties>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="7" rowCount="5">
-                <Column editable="false" title="CPF" type="java.lang.String"/>
-                <Column editable="false" title="NAME" type="java.lang.String"/>
-                <Column editable="false" title="ADDRESS" type="java.lang.String"/>
-                <Column editable="false" title="DELIVERY ADDRESS" type="java.lang.String"/>
-                <Column editable="false" title="BALANCE DUE" type="java.lang.String"/>
-                <Column editable="false" title="CONTACT" type="java.lang.String"/>
-                <Column editable="true" title="COMPANY" type="java.lang.String"/>
+              <Table columnCount="4" rowCount="5">
+                <Column editable="false" title="ID" type="java.lang.String"/>
+                <Column editable="false" title="CNPJ" type="java.lang.String"/>
+                <Column editable="false" title="SOCIAL REASON" type="java.lang.String"/>
+                <Column editable="false" title="AMOUNT" type="java.lang.String"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -122,21 +105,6 @@
                   <Editor/>
                   <Renderer/>
                 </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
-                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
-                  <Title/>
-                  <Editor/>
-                  <Renderer/>
-                </Column>
               </TableColumnModel>
             </Property>
             <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -146,12 +114,12 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="javax.swing.JLabel" name="lblCpf">
+    <Component class="javax.swing.JLabel" name="lblId">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="CPF:"/>
+        <Property name="text" type="java.lang.String" value="ID:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="txtSearch">
@@ -169,44 +137,12 @@
         <Property name="text" type="java.lang.String" value="Search"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="btnRegister">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Register"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnUpdate">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Update"/>
-      </Properties>
-    </Component>
     <Component class="javax.swing.JLabel" name="lblTitle">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="24" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Customers"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnRemove">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Remove"/>
-      </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="btnRefresh">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Segoe UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="R"/>
+        <Property name="text" type="java.lang.String" value="Companies Payroll"/>
       </Properties>
     </Component>
   </SubComponents>

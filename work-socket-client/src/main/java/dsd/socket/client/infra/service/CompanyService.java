@@ -117,9 +117,9 @@ public class CompanyService implements Service<Company, Integer> {
         String response = request.getResponse();
         String[] responseData = response.split(";");
 
-        Integer id = Integer.valueOf(responseData[1]);
-        String cnpj = responseData[2];
-        String socialReason = responseData[3];
+        Integer id = Integer.valueOf(responseData[0]);
+        String cnpj = responseData[1];
+        String socialReason = responseData[2];
 
         Company newCompany = new Company(id, cnpj, socialReason, id, null);
         return newCompany;
@@ -192,6 +192,19 @@ public class CompanyService implements Service<Company, Integer> {
 
         Company company = new Company(idCompany, cnpjCompany, socialReasonCompany, foundedIn, people);
         return company;
+    }
+    
+    public Double payroll(Integer id) {
+        CompanyRequest request = new CompanyRequest();
+
+        request.append(CompanyMethod.PAYROLL.toString())
+                .append(String.valueOf(id))
+                .send();
+        
+        String response = request.getResponse();
+        Double payroll = Double.valueOf(response);
+        
+        return payroll;
     }
 
 }

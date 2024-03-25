@@ -4,7 +4,12 @@
  */
 package dsd.socket.client.controller;
 
+import dsd.socket.client.controller.register.CompanyRegisterController;
+import dsd.socket.client.controller.consult.CompanyPayrollController;
+import dsd.socket.client.controller.consult.CompanyConsultController;
 import dsd.socket.client.controller.base.BaseController;
+import dsd.socket.client.controller.consult.CustomerConsultController;
+import dsd.socket.client.controller.register.CustomerRegisterController;
 import dsd.socket.client.view.MainView;
 
 /**
@@ -60,11 +65,13 @@ public final class MainController implements BaseController {
     }
     
     public void actionBtnCompanyRegister() {
-        
+        CompanyRegisterController companyRegisterController = new CompanyRegisterController();
+        companyRegisterController.showFrame();
     }
     
     public void actionBtnCompanyPayroll() {
-        
+        CompanyPayrollController companyPayrollController = new CompanyPayrollController();
+        companyPayrollController.showFrame();
     }
     
     public void actionBtnCompanyReceivable() {
@@ -72,11 +79,13 @@ public final class MainController implements BaseController {
     }
     
     public void actionBtnCustomerConsult() {
-        
+        CustomerConsultController customerConsultController = new CustomerConsultController();
+        customerConsultController.showFrame();
     }
     
     public void actionBtnCustomerRegister() {
-        
+        CustomerRegisterController customerRegisterController = new CustomerRegisterController();
+        customerRegisterController.showFrame();
     }
     
     public void actionBtnCustomerPayment() {

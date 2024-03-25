@@ -4,10 +4,15 @@
  */
 package dsd.socket.client.infra.request;
 
-public class CompanyRequest extends Request {
-
-    public CompanyRequest() {
+/**
+ *
+ * @author Matheus
+ */
+public class EmployeeRequest extends Request {
+    
+    public EmployeeRequest() {
         super();
-        this.request = "COMPANY";
+        this.request = "EMPLOYEE";
     }
+    
 }

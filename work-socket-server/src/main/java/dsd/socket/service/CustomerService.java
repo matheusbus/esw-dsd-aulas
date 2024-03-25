@@ -64,7 +64,7 @@ public class CustomerService extends RequestHandlerService {
             return;
         }
 
-        setResponse(customer.toString());
+        setResponse(customer.get().toString());
     }
 
     @Override
@@ -77,8 +77,15 @@ public class CustomerService extends RequestHandlerService {
         }
 
         StringBuilder builder = new StringBuilder();
-        builder.append(customers.size());
-        customers.forEach(customer -> builder.append(customer.toString() + ","));
+        builder.append(customers.size() + "::");
+
+        int lastIndex = customers.size() - 1;
+        for (int i = 0; i < customers.size(); i++) {
+            builder.append(customers.get(i).toString());
+            if (i != lastIndex) {
+                builder.append("::");
+            }
+        }
 
         setResponse(builder.toString());
     }
@@ -134,7 +141,7 @@ public class CustomerService extends RequestHandlerService {
 
         try {
             dao.update(customer);
-            setResponse(new String("Cliente atualizado com sucesso."));
+            setResponse(customer);
         } catch (Exception ex) {
             setResponse(ex.getMessage());
         }

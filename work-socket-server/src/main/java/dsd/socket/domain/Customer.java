@@ -75,9 +75,9 @@ public class Customer extends Person implements Serializable {
         } else {
             companyString = new StringBuilder()
                 .append("[")
-                .append(company.getId()).append(";")
-                .append(company.getCnpj()).append(";")
-                .append(company.getSocialReason()).append(";")
+                .append(company.getId()).append("##")
+                .append(company.getCnpj()).append("##")
+                .append(company.getSocialReason()).append("##")
                 .append(company.getFoundedIn())
                 .append("]");
         }

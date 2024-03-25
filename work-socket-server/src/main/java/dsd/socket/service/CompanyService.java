@@ -115,7 +115,7 @@ public class CompanyService extends RequestHandlerService {
 
         Company companyToUpdate = dao.find(Integer.parseInt(requestData[2]));
         if(companyToUpdate == null) {
-            setResponse("Company was not found.");
+            setResponse("Empresa não encontrada.");
             return;
         }
 

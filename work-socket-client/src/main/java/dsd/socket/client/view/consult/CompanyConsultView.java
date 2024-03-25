@@ -45,8 +45,9 @@ public final class CompanyConsultView extends BaseConsultView {
         btnUpdate = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
         btnRemove = new javax.swing.JButton();
+        btnRefresh = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Company [Consult]");
 
         tblCompany.setModel(new javax.swing.table.DefaultTableModel(
@@ -106,6 +107,9 @@ public final class CompanyConsultView extends BaseConsultView {
         btnRemove.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnRemove.setText("Remove");
 
+        btnRefresh.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        btnRefresh.setText("R");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,7 +132,9 @@ public final class CompanyConsultView extends BaseConsultView {
                                 .addComponent(btnSearch)
                                 .addGap(36, 36, 36)
                                 .addComponent(btnRegister)
-                                .addGap(96, 96, 96)
+                                .addGap(18, 18, 18)
+                                .addComponent(btnRefresh)
+                                .addGap(55, 55, 55)
                                 .addComponent(btnUpdate)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(btnRemove)))))
@@ -146,7 +152,8 @@ public final class CompanyConsultView extends BaseConsultView {
                     .addComponent(btnSearch)
                     .addComponent(btnRegister)
                     .addComponent(btnUpdate)
-                    .addComponent(btnRemove))
+                    .addComponent(btnRemove)
+                    .addComponent(btnRefresh))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -165,23 +172,27 @@ public final class CompanyConsultView extends BaseConsultView {
             }
         });
     }
-    
+
     public void addActionBtnRegister(ActionListener action) {
         btnRegister.addActionListener(action);
     }
-    
+
     public void addActionBtnUpdate(ActionListener action) {
         btnUpdate.addActionListener(action);
     }
-    
+
     public void addActionBtnRemove(ActionListener action) {
         btnRemove.addActionListener(action);
     }
-    
+
     public void addActionBtnSearch(ActionListener action) {
         btnSearch.addActionListener(action);
     }
     
+    public void addActionBtnRefresh(ActionListener action) {
+        btnRefresh.addActionListener(action);
+    }
+
     @Override
     public void clearSelection() {
         tblCompany.clearSelection();
@@ -191,25 +202,33 @@ public final class CompanyConsultView extends BaseConsultView {
     public void clearTable() {
         grid.setRowCount(0);
     }
-    
+
     public void fillTable(Map<Integer, Company> companies) {
         for (Map.Entry<Integer, Company> entry : companies.entrySet()) {
             grid.addRow(entry.getValue().getData());
         }
     }
-    
+
     public String getIdTableRecord() {
-        return (String) grid.getValueAt(tblCompany.getSelectedRow(), 0);
+        int selectedRow = tblCompany.getSelectedRow();
+        if (selectedRow != -1) { // Verifica se alguma linha está selecionada
+            Object value = grid.getValueAt(selectedRow, 0);
+            if (value != null) { // Verifica se o valor não é nulo
+                return value.toString(); // Converte o valor para String
+            }
+        }
+        return null;
+        //return (String) grid.getValueAt(tblCompany.getSelectedRow(), 0);
     }
-    
+
     public String getFilter() {
         return this.txtSearch.getText();
     }
-    
+
     public boolean searchTable(String id) {
         int incidencia = -1;
-        for (int i = 0; i <= tblCompany.getRowCount() - 1; i++) {
-            if (grid.getValueAt(i, 0).equals(id)) {
+        for (int i = 0; i < tblCompany.getRowCount(); i++) {
+            if (grid.getValueAt(i, 0).equals(Integer.valueOf(id))) {
                 incidencia = i;
             }
         }
@@ -220,8 +239,13 @@ public final class CompanyConsultView extends BaseConsultView {
             return false;
         }
     }
+    
+    public void clearSearch() {
+        this.txtSearch.setText("");
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnRefresh;
     private javax.swing.JButton btnRegister;
     private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnSearch;

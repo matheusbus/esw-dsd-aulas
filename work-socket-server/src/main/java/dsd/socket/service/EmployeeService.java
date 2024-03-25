@@ -121,7 +121,7 @@ public class EmployeeService extends RequestHandlerService {
 
         try {
             dao.update(employee);
-            setResponse(new String("Funcionário atualizado com sucesso."));
+            setResponse(employee);
         } catch (Exception ex) {
             setResponse(ex.getMessage());
         }
@@ -147,7 +147,9 @@ public class EmployeeService extends RequestHandlerService {
         }
 
         try {
+            dao.beginTrans();
             dao.delete(employee.get().getCpf());
+            dao.commitTrans();
             setResponse("Funcionário removido com sucesso.");
         } catch (Exception ex) {
             setResponse(ex.getMessage());

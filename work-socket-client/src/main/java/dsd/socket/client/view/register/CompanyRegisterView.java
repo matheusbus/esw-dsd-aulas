@@ -102,7 +102,7 @@ public final class CompanyRegisterView extends BaseRegisterView {
         btnUpdate = new javax.swing.JButton();
         btnCancel = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Company [Register]");
 
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
@@ -133,10 +133,10 @@ public final class CompanyRegisterView extends BaseRegisterView {
         btnRegister.setText("Register");
 
         btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnUpdate.setText("Cancel");
+        btnUpdate.setText("Update");
 
         btnCancel.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnCancel.setText("Update");
+        btnCancel.setText("Cancel");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -152,9 +152,9 @@ public final class CompanyRegisterView extends BaseRegisterView {
                             .addComponent(txtFoundedYear, javax.swing.GroupLayout.DEFAULT_SIZE, 130, Short.MAX_VALUE)
                             .addComponent(lblId)
                             .addComponent(txtId))
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGap(31, 31, 31)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addGap(31, 31, 31)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(txtCnpj, javax.swing.GroupLayout.PREFERRED_SIZE, 247, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(lblCnpj))
@@ -162,14 +162,13 @@ public final class CompanyRegisterView extends BaseRegisterView {
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(lblSocialReason)
                                     .addComponent(txtSocialReason, javax.swing.GroupLayout.PREFERRED_SIZE, 358, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(392, 392, 392)
+                            .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnRegister)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnCancel)
+                                .addComponent(btnUpdate)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnUpdate)))))
-                .addContainerGap(34, Short.MAX_VALUE))
+                                .addComponent(btnCancel)))))
+                .addContainerGap(21, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

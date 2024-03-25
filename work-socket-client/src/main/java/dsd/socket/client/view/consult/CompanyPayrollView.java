@@ -5,21 +5,23 @@
 package dsd.socket.client.view.consult;
 
 import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialOceanicIJTheme;
-import dsd.socket.client.model.Customer;
+import dsd.socket.client.model.Company;
 import dsd.socket.client.view.base.BaseConsultView;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.Map;
+import java.util.Vector;
 import javax.swing.table.DefaultTableModel;
 
 /**
  *
  * @author Matheus
  */
-public final class CustomerConsultView extends BaseConsultView {
+public final class CompanyPayrollView extends BaseConsultView {
 
     private DefaultTableModel grid;
 
-    public CustomerConsultView() {
+    public CompanyPayrollView() {
         initLayout();
     }
 
@@ -29,7 +31,7 @@ public final class CustomerConsultView extends BaseConsultView {
         this.setLocationRelativeTo(null);
         this.setResizable(false);
 
-        grid = (DefaultTableModel) tblCustomer.getModel();
+        grid = (DefaultTableModel) tblCompany.getModel();
     }
 
     @SuppressWarnings("unchecked")
@@ -37,36 +39,32 @@ public final class CustomerConsultView extends BaseConsultView {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tblCustomer = new javax.swing.JTable();
-        lblCpf = new javax.swing.JLabel();
+        tblCompany = new javax.swing.JTable();
+        lblId = new javax.swing.JLabel();
         txtSearch = new javax.swing.JTextField();
         btnSearch = new javax.swing.JButton();
-        btnRegister = new javax.swing.JButton();
-        btnUpdate = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
-        btnRemove = new javax.swing.JButton();
-        btnRefresh = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Customer [Consult]");
+        setTitle("Company [Consult]");
 
-        tblCustomer.setModel(new javax.swing.table.DefaultTableModel(
+        tblCompany.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
-                "CPF", "NAME", "ADDRESS", "DELIVERY ADDRESS", "BALANCE DUE", "CONTACT", "COMPANY"
+                "ID", "CNPJ", "SOCIAL REASON", "AMOUNT"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -77,40 +75,26 @@ public final class CustomerConsultView extends BaseConsultView {
                 return canEdit [columnIndex];
             }
         });
-        tblCustomer.getTableHeader().setResizingAllowed(false);
-        tblCustomer.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(tblCustomer);
-        if (tblCustomer.getColumnModel().getColumnCount() > 0) {
-            tblCustomer.getColumnModel().getColumn(0).setResizable(false);
-            tblCustomer.getColumnModel().getColumn(1).setResizable(false);
-            tblCustomer.getColumnModel().getColumn(2).setResizable(false);
-            tblCustomer.getColumnModel().getColumn(3).setResizable(false);
-            tblCustomer.getColumnModel().getColumn(4).setResizable(false);
-            tblCustomer.getColumnModel().getColumn(5).setResizable(false);
+        tblCompany.getTableHeader().setResizingAllowed(false);
+        tblCompany.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tblCompany);
+        if (tblCompany.getColumnModel().getColumnCount() > 0) {
+            tblCompany.getColumnModel().getColumn(0).setResizable(false);
+            tblCompany.getColumnModel().getColumn(1).setResizable(false);
+            tblCompany.getColumnModel().getColumn(2).setResizable(false);
+            tblCompany.getColumnModel().getColumn(3).setResizable(false);
         }
 
-        lblCpf.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        lblCpf.setText("CPF:");
+        lblId.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        lblId.setText("ID:");
 
         txtSearch.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         btnSearch.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         btnSearch.setText("Search");
 
-        btnRegister.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnRegister.setText("Register");
-
-        btnUpdate.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnUpdate.setText("Update");
-
         lblTitle.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
-        lblTitle.setText("Customers");
-
-        btnRemove.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnRemove.setText("Remove");
-
-        btnRefresh.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        btnRefresh.setText("R");
+        lblTitle.setText("Companies Payroll");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -119,27 +103,18 @@ public final class CustomerConsultView extends BaseConsultView {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 1088, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(11, 11, 11)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(lblTitle)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblTitle)
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lblCpf)
+                                .addComponent(lblId)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(28, 28, 28)
-                                .addComponent(btnSearch)
-                                .addGap(36, 36, 36)
-                                .addComponent(btnRegister)
+                                .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
-                                .addComponent(btnRefresh)
-                                .addGap(55, 55, 55)
-                                .addComponent(btnUpdate)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnRemove)))))
+                                .addComponent(btnSearch)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -149,13 +124,9 @@ public final class CustomerConsultView extends BaseConsultView {
                 .addComponent(lblTitle)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 56, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lblCpf)
+                    .addComponent(lblId)
                     .addComponent(txtSearch, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btnSearch)
-                    .addComponent(btnRegister)
-                    .addComponent(btnUpdate)
-                    .addComponent(btnRemove)
-                    .addComponent(btnRefresh))
+                    .addComponent(btnSearch))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 355, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -170,34 +141,17 @@ public final class CustomerConsultView extends BaseConsultView {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new CustomerConsultView().setVisible(true);
+                new CompanyPayrollView().setVisible(true);
             }
         });
-    }
-
-    public void addActionBtnRegister(ActionListener action) {
-        btnRegister.addActionListener(action);
-    }
-
-    public void addActionBtnUpdate(ActionListener action) {
-        btnUpdate.addActionListener(action);
-    }
-
-    public void addActionBtnRemove(ActionListener action) {
-        btnRemove.addActionListener(action);
     }
 
     public void addActionBtnSearch(ActionListener action) {
         btnSearch.addActionListener(action);
     }
-    
-    public void addActionBtnRefresh(ActionListener action) {
-        btnRefresh.addActionListener(action);
-    }
-
     @Override
     public void clearSelection() {
-        tblCustomer.clearSelection();
+        tblCompany.clearSelection();
     }
 
     @Override
@@ -205,21 +159,22 @@ public final class CustomerConsultView extends BaseConsultView {
         grid.setRowCount(0);
     }
 
-    public void fillTable(Map<String, Customer> customers) {
-        for (Map.Entry<String, Customer> entry : customers.entrySet()) {
-            grid.addRow(entry.getValue().getData());
+    public void fillTable(List<Object[]> records) {
+        for (Object[] record : records) {
+            grid.addRow(record);
         }
     }
 
     public String getIdTableRecord() {
-        int selectedRow = tblCustomer.getSelectedRow();
-        if (selectedRow != -1) {
+        int selectedRow = tblCompany.getSelectedRow();
+        if (selectedRow != -1) { // Verifica se alguma linha está selecionada
             Object value = grid.getValueAt(selectedRow, 0);
-            if (value != null) {
-                return value.toString();
+            if (value != null) { // Verifica se o valor não é nulo
+                return value.toString(); // Converte o valor para String
             }
         }
         return null;
+        //return (String) grid.getValueAt(tblCompany.getSelectedRow(), 0);
     }
 
     public String getFilter() {
@@ -228,13 +183,13 @@ public final class CustomerConsultView extends BaseConsultView {
 
     public boolean searchTable(String id) {
         int incidencia = -1;
-        for (int i = 0; i < tblCustomer.getRowCount(); i++) {
+        for (int i = 0; i < tblCompany.getRowCount(); i++) {
             if (grid.getValueAt(i, 0).equals(Integer.valueOf(id))) {
                 incidencia = i;
             }
         }
         if (incidencia != -1) {
-            tblCustomer.setRowSelectionInterval(incidencia, incidencia);
+            tblCompany.setRowSelectionInterval(incidencia, incidencia);
             return true;
         } else {
             return false;
@@ -246,15 +201,11 @@ public final class CustomerConsultView extends BaseConsultView {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnRefresh;
-    private javax.swing.JButton btnRegister;
-    private javax.swing.JButton btnRemove;
     private javax.swing.JButton btnSearch;
-    private javax.swing.JButton btnUpdate;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel lblCpf;
+    private javax.swing.JLabel lblId;
     private javax.swing.JLabel lblTitle;
-    private javax.swing.JTable tblCustomer;
+    private javax.swing.JTable tblCompany;
     private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 

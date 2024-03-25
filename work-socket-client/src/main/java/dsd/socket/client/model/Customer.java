@@ -48,6 +48,10 @@ public class Customer extends Person {
     public void setBalanceDue(Double balanceDue) {
         this.balanceDue = balanceDue;
     }
+    
+    public Object[] getData() {
+        return new Object[]{this.cpf, this.name, this.address, this.deliveryAddress, this.balanceDue, this.contact, this.company.getCnpj()+ " - " + this.company.getSocialReason()};
+    }
 
     @Override
     public String toString() {

@@ -2,9 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dsd.socket.client.controller;
+package dsd.socket.client.controller.register;
 
+import dsd.socket.client.controller.consult.CompanyConsultController;
 import dsd.socket.client.controller.base.BaseRegisterController;
+import dsd.socket.client.infra.service.CompanyService;
 import dsd.socket.client.model.Company;
 import dsd.socket.client.view.register.CompanyRegisterView;
 
@@ -17,6 +19,7 @@ public final class CompanyRegisterController implements BaseRegisterController {
     private CompanyRegisterView view;
     private Company company;
     private CompanyConsultController companyConsultController;
+    private CompanyService companyService = new CompanyService();
 
     public CompanyRegisterController() {
         this.view = new CompanyRegisterView();
@@ -30,7 +33,7 @@ public final class CompanyRegisterController implements BaseRegisterController {
         this.company = company;
         this.companyConsultController = companyConsultController;
         initButtons();
-        initializeRegister();
+        initializeUpdate();
         populateFields();
     }
 
@@ -66,19 +69,19 @@ public final class CompanyRegisterController implements BaseRegisterController {
     public boolean verifyNullFields() {
         return view.verifyNullFields();
     }
-    
+
     public void initializeRegister() {
         view.initializeRegister();
     }
-    
+
     public void initializeUpdate() {
         view.initializeUpdate();
     }
-    
+
     public void actionCancel() {
         closeFrame();
     }
-    
+
     public void populateFields() {
         try {
             view.setId(String.valueOf(company.getId()));
@@ -89,17 +92,23 @@ public final class CompanyRegisterController implements BaseRegisterController {
             showMessage("Error when filling in fields: " + ex.getMessage(), "Error");
         }
     }
-    
+
     public void actionRegister() {
-        if(verifyNullFields()) {
+        if (verifyNullFields()) {
             try {
-                Integer id = Integer.valueOf(view.getId());
                 String cnpj = view.getCnpj();
                 String socialReason = view.getSocialReason();
                 Integer foundedYear = Integer.valueOf(view.getFoundedYear());
-                
-                // enviar requisição para insert
-                
+
+                Company company = new Company(null, cnpj, socialReason, foundedYear, null);
+                companyService.insert(company);
+
+                showMessage("Registered successfully!", "Error");
+                if (companyConsultController != null) {
+                    companyConsultController.fillTable();
+                }
+                closeFrame();
+
             } catch (Exception ex) {
                 showMessage(ex.getMessage(), "Error");
             }
@@ -109,21 +118,23 @@ public final class CompanyRegisterController implements BaseRegisterController {
     }
 
     public void actionUpdate() {
-        if(verifyNullFields()) {
+        if (verifyNullFields()) {
             try {
                 Integer id = Integer.valueOf(view.getId());
                 String cnpj = view.getCnpj();
                 String socialReason = view.getSocialReason();
                 Integer foundedYear = Integer.valueOf(view.getFoundedYear());
-                
+
                 company.setCnpj(cnpj);
                 company.setSocialReason(socialReason);
                 company.setFoundedIn(foundedYear);
-                
-                // enviar requisição para update
-                
+
+                companyService.update(company);
+
                 showMessage("Updated successfully!", "Success");
-                
+                closeFrame();
+                companyConsultController.fillTable();
+
             } catch (Exception ex) {
                 showMessage(ex.getMessage(), "Error");
             }
@@ -131,5 +142,5 @@ public final class CompanyRegisterController implements BaseRegisterController {
             showMessage("Check the fields", "Error");
         }
     }
-    
+
 }

@@ -2,28 +2,27 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package dsd.socket.client.controller;
+package dsd.socket.client.controller.consult;
 
+import dsd.socket.client.controller.register.CustomerRegisterController;
 import dsd.socket.client.controller.base.BaseCosultController;
-import dsd.socket.client.infra.service.CompanyService;
-import dsd.socket.client.model.Company;
-import dsd.socket.client.view.consult.CompanyConsultView;
-import dsd.socket.client.view.register.CompanyRegisterView;
+import dsd.socket.client.infra.service.CustomerService;
+import dsd.socket.client.model.Customer;
+import dsd.socket.client.view.consult.CustomerConsultView;
+import dsd.socket.client.view.register.CustomerRegisterView;
 
 /**
  *
  * @author Matheus
  */
-public final class CompanyConsultController implements BaseCosultController {
+public final class CustomerConsultController implements BaseCosultController {
 
-    private final CompanyConsultView view;
-    private final Company companySelected;
-    private final CompanyService companyService;
+    private final CustomerConsultView view;
+    private final CustomerService customerService;
 
-    public CompanyConsultController() {
-        this.view = new CompanyConsultView();
-        this.companySelected = null;
-        this.companyService = new CompanyService();
+    public CustomerConsultController() {
+        this.view = new CustomerConsultView();
+        this.customerService = new CustomerService();
         initButtons();
     }
 
@@ -41,6 +40,9 @@ public final class CompanyConsultController implements BaseCosultController {
         view.addActionBtnRemove(((e) -> {
             actionRemove();
         }));
+        view.addActionBtnRefresh((e) -> {
+            actionRefresh();
+        });
     }
 
     @Override
@@ -48,39 +50,43 @@ public final class CompanyConsultController implements BaseCosultController {
         view.clearTable();
         
         try {
-            view.fillTable(companyService.findAll());
+            view.fillTable(customerService.findAll());
         } catch (Exception ex) {
             showMessage(ex.getMessage(), "Erro");
         }
         
+    }
+    
+    public void actionRefresh() {
+        fillTable();
     }
 
     public void actionSeacth() {
         view.clearSelection();
         String id = view.getFilter();
         if (!id.isEmpty()) {
-            if (view.searchTable(id)) {
-                showMessage("Success!", "Success");
-            } else {
-                showMessage("No company was found with the given identifier!", "Company not found");
+            if (!view.searchTable(id)) {
+                showMessage("No customer was found with the given identifier!", "Company not found");
             }
         } else {
             showMessage("Enter a valid identifier!", "Invalid identifier");
         }
+        view.clearSearch();
     }
 
     public void actionRegister() {
-        CompanyRegisterController companyRegisterController = new CompanyRegisterController();
-        companyRegisterController.showFrame();
+        CustomerRegisterController customerRegisterController = new CustomerRegisterController();
+        customerRegisterController.showFrame();
     }
 
     public void actionUpdate() {
         try {
-            String id = view.getIdTableRecord();
+            String cpf = view.getIdTableRecord();
             
-            Company company = (Company) companyService.find(Integer.valueOf(id));
-            CompanyRegisterController companyRegisterController = new CompanyRegisterController(new CompanyRegisterView(), company, this);
-            companyRegisterController.showFrame();
+            Customer customer = (Customer) customerService.find(cpf);
+            CustomerRegisterController customerRegisterController = new CustomerRegisterController(new CustomerRegisterView(), customer, this);
+            customerRegisterController.showFrame();
+            fillTable();
         } catch (Exception e) {
             showMessage("No records were selected.", "Error");
         }
@@ -89,7 +95,7 @@ public final class CompanyConsultController implements BaseCosultController {
     public void actionRemove() {
         try {
             if (0 == view.question("Are you sure you want to delete the selected record?", "Deletion confirmation")) {
-                companyService.delete(Integer.valueOf(view.getIdTableRecord()));
+                customerService.delete(view.getIdTableRecord());
                 fillTable();
                 showMessage("Registration successfully removed", "Success");
             }

@@ -69,9 +69,18 @@ public abstract class JpaDAO<T, ID> implements DAO<T, ID> {
 
     @Override
     public void delete(ID id) {
-        T entity = find(id);
-        if(entity != null) {
-            em.remove(entity);
+        try {
+            beginTrans(); // Iniciar transação
+            T entity = find(id);
+            if(entity != null) {
+                em.remove(entity);
+                commitTrans(); // Confirmar transação se a exclusão for bem-sucedida
+            } else {
+                rollback(); // Fazer rollback se a entidade não for encontrada
+            }
+        } catch (Exception ex) {
+            rollback(); // Fazer rollback em caso de exceção
+            throw new RuntimeException("Erro ao excluir a entidade", ex); // Lidar com exceção
         }
     }
 
