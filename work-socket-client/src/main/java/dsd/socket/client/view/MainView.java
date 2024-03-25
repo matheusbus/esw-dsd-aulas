@@ -97,9 +97,10 @@ public class MainView extends BaseView implements RequestObserver {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
+        txtLog.setEditable(false);
         txtLog.setColumns(20);
         txtLog.setFont(new java.awt.Font("Liberation Mono", 0, 14)); // NOI18N
-        txtLog.setForeground(new java.awt.Color(255, 153, 102));
+        txtLog.setForeground(new java.awt.Color(0, 102, 102));
         txtLog.setLineWrap(true);
         txtLog.setRows(5);
         jScrollPane1.setViewportView(txtLog);
