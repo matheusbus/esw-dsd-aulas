@@ -78,7 +78,7 @@ public class MainView extends BaseView implements RequestObserver {
         jMenuItem2 = new javax.swing.JMenuItem();
         jScrollPane1 = new javax.swing.JScrollPane();
         txtLog = new javax.swing.JTextArea();
-        jLabel1 = new javax.swing.JLabel();
+        lxlLogInformation = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         muCompany = new javax.swing.JMenu();
         miCompanyConsult = new javax.swing.JMenuItem();
@@ -104,8 +104,8 @@ public class MainView extends BaseView implements RequestObserver {
         txtLog.setRows(5);
         jScrollPane1.setViewportView(txtLog);
 
-        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
-        jLabel1.setText("Log");
+        lxlLogInformation.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        lxlLogInformation.setText("Log Information");
 
         muCompany.setText("Company");
 
@@ -157,7 +157,7 @@ public class MainView extends BaseView implements RequestObserver {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(lxlLogInformation)
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -165,7 +165,7 @@ public class MainView extends BaseView implements RequestObserver {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(jLabel1)
+                .addComponent(lxlLogInformation)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -176,10 +176,10 @@ public class MainView extends BaseView implements RequestObserver {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lxlLogInformation;
     private javax.swing.JMenuItem miCompanyConsult;
     private javax.swing.JMenuItem miCompanyPayroll;
     private javax.swing.JMenuItem miCompanyReceivable;
