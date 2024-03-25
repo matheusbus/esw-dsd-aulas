@@ -4,6 +4,7 @@
  */
 package dsd.socket.client.infra.service;
 
+import dsd.socket.client.infra.observer.Subject;
 import dsd.socket.client.infra.request.CompanyRequest;
 import dsd.socket.client.model.Company;
 import dsd.socket.client.model.Customer;

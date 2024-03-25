@@ -25,7 +25,7 @@ public class App {
         try {
             while (true) {
                 // Conectar ao servidor na porta 12345
-                Socket socket = new Socket("localhost", 12345);
+                Socket socket = new Socket("192.168.2.102", 12345);
 
                 // Fluxo de saída para enviar dados para o servidor
                 PrintWriter out = new PrintWriter(socket.getOutputStream(), true);

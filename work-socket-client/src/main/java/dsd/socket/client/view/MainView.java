@@ -4,7 +4,8 @@
  */
 package dsd.socket.client.view;
 
-import com.formdev.flatlaf.intellijthemes.materialthemeuilite.FlatMaterialOceanicIJTheme;
+import dsd.socket.client.infra.observer.RequestObserver;
+import dsd.socket.client.infra.socket.WorkSocketClient;
 import dsd.socket.client.view.base.BaseView;
 import java.awt.event.ActionListener;
 
@@ -12,12 +13,13 @@ import java.awt.event.ActionListener;
  *
  * @author Matheus
  */
-public class MainView extends BaseView {
+public class MainView extends BaseView implements RequestObserver {
 
     /**
      * Creates new form MainView
      */
     public MainView() {
+        WorkSocketClient.getInstance().registerObserver(this);
         initLayout();
     }
 
@@ -31,37 +33,42 @@ public class MainView extends BaseView {
     public void addActionBtnCompanyConsult(ActionListener acao) {
         miCompanyConsult.addActionListener(acao);
     }
-    
+
     public void addActionBtnCompanyRegister(ActionListener acao) {
         miCompanyRegister.addActionListener(acao);
     }
-    
+
     public void addActionBtnCompanyPayroll(ActionListener acao) {
         miCompanyPayroll.addActionListener(acao);
     }
-    
+
     public void addActionBtnCompanyReceivable(ActionListener acao) {
         miCompanyReceivable.addActionListener(acao);
     }
-    
+
     public void addActionBtnCustomerConsult(ActionListener acao) {
         miCustomerConsult.addActionListener(acao);
     }
-    
+
     public void addActionBtnCustomerRegister(ActionListener acao) {
         miCustomerRegister.addActionListener(acao);
     }
-    
+
     public void addActionBtnCustomerPayment(ActionListener acao) {
         miCustomerPayment.addActionListener(acao);
     }
-    
+
     public void addActionBtnEmployeeConsult(ActionListener acao) {
         miEmployeeConsult.addActionListener(acao);
     }
-    
+
     public void addActionBtnEmployeeRegister(ActionListener acao) {
         miEmployeeRegister.addActionListener(acao);
+    }
+
+    @Override
+    public void update(String message) {
+        this.txtLog.append(message + "\n" + "\n");
     }
 
     @SuppressWarnings("unchecked")
@@ -69,6 +76,9 @@ public class MainView extends BaseView {
     private void initComponents() {
 
         jMenuItem2 = new javax.swing.JMenuItem();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtLog = new javax.swing.JTextArea();
+        jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         muCompany = new javax.swing.JMenu();
         miCompanyConsult = new javax.swing.JMenuItem();
@@ -86,6 +96,16 @@ public class MainView extends BaseView {
         jMenuItem2.setText("jMenuItem2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        txtLog.setColumns(20);
+        txtLog.setFont(new java.awt.Font("Liberation Mono", 0, 14)); // NOI18N
+        txtLog.setForeground(new java.awt.Color(255, 153, 102));
+        txtLog.setLineWrap(true);
+        txtLog.setRows(5);
+        jScrollPane1.setViewportView(txtLog);
+
+        jLabel1.setFont(new java.awt.Font("Liberation Sans", 1, 18)); // NOI18N
+        jLabel1.setText("Log");
 
         muCompany.setText("Company");
 
@@ -132,11 +152,23 @@ public class MainView extends BaseView {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 277, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(22, Short.MAX_VALUE)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 367, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         pack();
@@ -144,8 +176,10 @@ public class MainView extends BaseView {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JMenuItem miCompanyConsult;
     private javax.swing.JMenuItem miCompanyPayroll;
     private javax.swing.JMenuItem miCompanyReceivable;
@@ -158,5 +192,7 @@ public class MainView extends BaseView {
     private javax.swing.JMenu muCompany;
     private javax.swing.JMenu muCustomer;
     private javax.swing.JMenu muEmployee;
+    private javax.swing.JTextArea txtLog;
     // End of variables declaration//GEN-END:variables
+
 }
