@@ -21,6 +21,7 @@ public abstract class Person implements Serializable {
     private String address;
     
     @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "com_id")
     protected Company company;
 
     public Person() {
@@ -62,7 +63,6 @@ public abstract class Person implements Serializable {
 
     public void setCompany(Company company) {
         this.company = company;
-        this.company.addPerson(this);
     }
 
     @Override

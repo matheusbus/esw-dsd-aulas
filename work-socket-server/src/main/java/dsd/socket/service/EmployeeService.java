@@ -1,10 +1,14 @@
 package dsd.socket.service;
 
 import dsd.socket.dao.DAO;
+import dsd.socket.dao.JpaDAO;
 import dsd.socket.domain.Company;
 import dsd.socket.domain.Employee;
 import dsd.socket.protocol.EmployeeMethod;
 import dsd.socket.request.RequestHandlerService;
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.EntityTransaction;
+import jakarta.transaction.Transaction;
 
 import java.util.List;
 import java.util.Optional;
@@ -106,11 +110,42 @@ public class EmployeeService extends RequestHandlerService {
         }
 
 
-        Employee newEmployee = new Employee(cpf, name, address, position, salary, active, company);
+        Employee newEmployee = new Employee(cpf, name, address, position, salary, active);
+        company.addPerson(newEmployee);
         try {
+            // Inicie a transação para persistir o funcionário
+            dao.beginTrans();
+
+            // Persista o novo funcionário no banco de dados
+            dao.insert(newEmployee);
+
+            // Commit da transação
+            dao.commitTrans();
+
+            // Recupere a empresa do banco de dados para garantir que esteja no estado gerenciado
+            company = companyDao.find(companyId);
+
+            // Atualize a lista de pessoas da empresa com a nova pessoa adicionada
+            company.addPerson(newEmployee);
+
+            // Inicie uma nova transação para atualizar a empresa
+            companyDao.beginTrans();
+
+            // Atualize a empresa no banco de dados
+            companyDao.update(company);
+
+            // Commit da transação
+            companyDao.commitTrans();
+
+            /*
             dao.beginTrans();
             dao.insert(newEmployee);
             dao.commitTrans();
+
+            companyDao.beginTrans();
+            companyDao.update(company);
+            companyDao.commitTrans();
+            */
             setResponse(newEmployee);
         } catch (Exception ex) {
             dao.rollback();

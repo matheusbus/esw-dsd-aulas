@@ -64,7 +64,7 @@ public class CustomerPaymentView extends BaseView {
         btnConfirm = new javax.swing.JButton();
         lblTitle = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Customer [Payment]");
 
         lblCpf.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N

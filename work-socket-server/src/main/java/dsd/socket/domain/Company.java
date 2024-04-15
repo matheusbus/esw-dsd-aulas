@@ -43,7 +43,7 @@ public class Company implements Serializable {
     @NotNull(message = "Ano de fundação não pode ser nulo")
     @Column(name = "com_foundedin")
     private Integer foundedIn;
-        
+
     @OneToMany(mappedBy = "company", fetch = FetchType.EAGER)
     private List<Person> people = new ArrayList<>();
 
@@ -100,12 +100,13 @@ public class Company implements Serializable {
         }
         return false;
     }
-    
+
     public boolean addPerson(Person person) {
-        if(this.people.indexOf(person) != -1) {
-            return false;
+        person.setCompany(this);
+        if (!this.people.contains(person)) {
+            return this.people.add(person);
         }
-        return this.people.add(person);
+        return false;
     }
 
     public void setPeople(List<Person> people) {
@@ -115,11 +116,13 @@ public class Company implements Serializable {
     public Double calculatePayRoll() {
         AtomicReference<Double> payRoll = new AtomicReference<>(0.00);
 
-        people.forEach(p -> {
-            if(p instanceof Employee) {
-                payRoll.updateAndGet(v -> v + ((Employee) p).getSalary());
-            }
-        });
+        if(people != null) {
+            people.forEach(p -> {
+                if(p instanceof Employee) {
+                    payRoll.updateAndGet(v -> v + ((Employee) p).getSalary());
+                }
+            });
+        }
 
         return payRoll.get();
     }

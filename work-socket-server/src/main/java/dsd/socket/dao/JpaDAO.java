@@ -1,9 +1,7 @@
 package dsd.socket.dao;
 
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.EntityManagerFactory;
-import jakarta.persistence.Persistence;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
+import jakarta.transaction.Transaction;
 
 import java.util.List;
 
@@ -28,6 +26,10 @@ public abstract class JpaDAO<T, ID> implements DAO<T, ID> {
     public JpaDAO(Class<T> clazz) {
         this.clazz = clazz;
         em = emf.createEntityManager();
+    }
+
+    public EntityTransaction getTransaction() {
+        return em.getTransaction();
     }
 
     @Override
